@@ -1,0 +1,30 @@
+
+.main-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+    margin: 0;
+  }
+  
+  .login {
+    width: 30%;    
+    padding: 1rem;
+    margin: 0 3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login label,
+  .login input {
+    margin-bottom: 1rem;
+  }
+
+  input, button {
+    min-height: 40px;
+  }
