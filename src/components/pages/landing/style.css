@@ -1,2 +1,5 @@
-.main-content {
-padding: 77px;}
+.landing-page{
+height: 100vh;
+display: flex;
+flex-direction: column;
+}
