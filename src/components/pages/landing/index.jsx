@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../../navbar';
-import Footer from '../../Footer';
-import Login from '../../login';
+import Navbar from '../../shared/navbar';
+import Footer from '../../shared/Footer';
+import Login from '../../Admin/login';
 
 import "./style.css";
 
