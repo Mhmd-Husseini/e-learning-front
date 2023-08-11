@@ -1,6 +1,9 @@
 import './App.css';
 import Landing from './components/pages/landing';
-import Admin from './components/pages/Admin';
+import AdminSidebar from './components/Admin/AdminSidebar';
+import AdminHome from './components/pages/Admin/AdminHome';
+import AdminUser from './components/pages/Admin/AdminAdmin';
+import AdminLayout from './components/pages/Admin/AdminLayout';
 import Children from './components/pages/Parent/Children';
 import Son from './components/pages/Parent/Son';
 import StudentClasses from './components/pages/Student/StudentClasses';
@@ -15,17 +18,21 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Landing />} />
-        <Route path="/admin" element={<Admin />} />
+        
+        <Route path="/admin/*" element={<AdminLayout />} />
 
         <Route path="/teacher" >
           <Route index element={<TeacherClasses />} />
         </Route> 
+
         <Route path="/Student" >
           <Route index element={<StudentClasses />} />
         </Route> 
+
         <Route path="/Parent" >
           <Route index element={<Children />} />
         </Route> 
+
         <Route path="*" element={<Landing />} />
 
       </Routes>
