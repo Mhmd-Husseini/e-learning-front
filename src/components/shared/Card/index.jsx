@@ -1,14 +1,19 @@
 import React from 'react'
+import './style.css'
 
-const Card = () => {
+const Card = ({course_id, name, description}) => {
+
+    let link = "courses/" + {course_id}
+
     return (
-        <div className="container">
-            <div className="content">
-                <a href="">
-                    <div className="card">
-                    </div></a>
-            </div>
-        </div>
+        <>
+            <a href={link}>
+                <div className="card">
+                    <span>{name}</span>
+                    <p>{description}</p>
+                </div>
+                </a>
+        </>
     )
 }
 
