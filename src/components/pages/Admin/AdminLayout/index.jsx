@@ -13,7 +13,7 @@ const AdminLayout = () => {
   return (
     <>
     <div className="admin-layout">
-      <AdminSidebar />
+      <AdminSidebar/>
       <div className="content">
         <Routes>
           <Route index element={<AdminHome />} />
@@ -21,7 +21,6 @@ const AdminLayout = () => {
           <Route path="teacher" element={<AdminTeacher />} />
           <Route path="student" element={<AdminStudent />} />
           <Route path="parent" element={<AdminParent />} />
-
         </Routes>
       </div>
     </div>
