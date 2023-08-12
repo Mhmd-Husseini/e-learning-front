@@ -1,0 +1,8 @@
+.person-item {
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    width: 75%;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
