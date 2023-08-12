@@ -1,41 +1,50 @@
 import React from 'react'
 import './style.css'
+import ClassworkListItem from '../ClassworkListItem'
 
 const ClassworkListContainer = () => {
 
   let sample_data =
-        [
-            {
-                course_id: 1,
-                name:"FSW",
-                description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde nobis deserunt corrupti velit!",
-            },
-            {
-                course_id: 2,
-                name:"UIX",
-                description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde nobis deserunt corrupti velit!",
-            },
-            {
-                course_id: 3,
-                name:"FSD",
-                description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde nobis deserunt corrupti velit!",
-            },
-            {
-                course_id: 3,
-                name:"FSBatata",
-                description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde nobis deserunt corrupti velit!",
-            },
-            {
-                course_id: 4,
-                name:"FSTe3tir",
-                description:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde nobis deserunt corrupti velit!",
-            },
-        ]
+    [
+      {
+        id: 2,
+        course_id: 1,
+        title: "FSW",
+        due: "23:59 8-16-2023",
+      },
+      {
+        id: 2,
+        course_id: 2,
+        title: "UIX",
+        due: "23:59 8-16-2023",
+      },
+      {
+        id: 2,
+        course_id: 3,
+        title: "FSD",
+        due: "23:59 8-16-2023",
+      },
+      {
+        id: 2,
+        course_id: 3,
+        title: "FSBatata",
+        due: "23:59 8-16-2023",
+      },
+      {
+        id: 2,
+        course_id: 4,
+        title: "FSTe3tir",
+        due: "23:59 8-16-2023",
+      },
+    ]
 
   return (
     <div className='list-container'>
-        <div className="list-wrapper">
-        </div>
+      <div className="list-wrapper">
+      {sample_data.map((item) => {
+            return <ClassworkListItem id={item.id} course_id={item.course_id} title={item.title} due={item.due}/>
+        })}
+      </div>
     </div>
   )
 }
