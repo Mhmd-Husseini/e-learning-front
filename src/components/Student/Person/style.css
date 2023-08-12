@@ -6,3 +6,8 @@
     padding: 20px;
     border-bottom: 1px solid #333;
 }
+
+.chat-icon {
+    color: #333;
+    cursor: pointer;
+}

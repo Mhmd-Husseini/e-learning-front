@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 
-const Person = ({item}) => {
+const Person = ({item, handleOpenModal}) => {
 
     const id = item.id
 
@@ -11,7 +11,7 @@ const Person = ({item}) => {
     
     <div className='person-item'>
         <span>{item.name}</span>
-        <a href={link}><span>Chat_icon</span></a>
+        <i class="fa-regular fa-comment chat-icon" onClick={handleOpenModal}></i>
     </div>
 
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import Person from '../Person'
 
-const PeopleContainer = () => {
+const PeopleContainer = ({openModal, handleOpenModal}) => {
 
     let sample_data =
         [
@@ -37,7 +37,7 @@ const PeopleContainer = () => {
         <div className='list-container'>
             <div className="list-wrapper">
                 {sample_data.map((item) => {
-                    return <Person item={item} />
+                    return <Person item={item} handleOpenModal={handleOpenModal} />
                 })}
             </div>
         </div>
