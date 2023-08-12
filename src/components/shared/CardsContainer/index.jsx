@@ -33,10 +33,10 @@ const CardsContainer = ({courses}) => {
             },
         ]
   return (
-    <div className='container'>
-        <div className="content">
+    <div className='course-container'>
+        <div className="course-content">
         {sample_data.map((item) => {
-            return <Card course_id={item.course_id} name={item.name} description={item.description}/>
+            return <Card course={item}/>
         })}
         </div>
     </div>

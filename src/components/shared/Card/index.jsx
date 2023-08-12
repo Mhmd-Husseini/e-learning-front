@@ -1,16 +1,18 @@
 import React from 'react'
 import './style.css'
 
-const Card = ({course_id, name, description}) => {
+const Card = ({course}) => {
 
-    let link = "courses/" + {course_id}
+    let id = course.course_id
+
+    let link = "courses/" + {id}
 
     return (
         <>
             <a href={link}>
                 <div className="card">
-                    <span>{name}</span>
-                    <p>{description}</p>
+                    <span>{course.name}</span>
+                    <p>{course.description}</p>
                 </div>
                 </a>
         </>
