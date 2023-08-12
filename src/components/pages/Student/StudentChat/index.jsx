@@ -5,7 +5,7 @@ import PeopleContainer from '../../../Student/PeopleContainer'
 const StudentChat = () => {
   return (
     <div>
-        <Navbar/>
+        <Navbar one={'Classwork'} two={'Enrollments'}/>
         <PeopleContainer/>
     </div>
   )
