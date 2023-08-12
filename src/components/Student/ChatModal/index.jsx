@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import Modal from 'react-modal'
 
-const ChatModal = ({openModal, handleOpenModal, handleCloseModal}) => {
+const ChatModal = ({openModal, handleCloseModal}) => {
   return (
     <div>
         <Modal isOpen={openModal} className="modal">
