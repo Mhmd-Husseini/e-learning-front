@@ -34,6 +34,11 @@ const AdminSidebar = () => {
                 Parents
               </NavLink>
             </li>
+            <li className="sidebarListItem">
+              <NavLink to="/admin/course" className="link" activeClassName="active">
+                Courses
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

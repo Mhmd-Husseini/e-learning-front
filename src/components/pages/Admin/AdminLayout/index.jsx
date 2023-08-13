@@ -6,6 +6,7 @@ import AdminAdmin from '../AdminAdmin';
 import AdminStudent from '../AdminStudent';
 import AdminTeacher from '../AdminTeacher';
 import AdminParent from '../AdminParent';
+import AdminCourse from '../AdminCourse';
 
 import "./style.css";
 
@@ -21,6 +22,8 @@ const AdminLayout = () => {
           <Route path="teacher" element={<AdminTeacher />} />
           <Route path="student" element={<AdminStudent />} />
           <Route path="parent" element={<AdminParent />} />
+          <Route path="course" element={<AdminCourse />} />
+
         </Routes>
       </div>
     </div>
