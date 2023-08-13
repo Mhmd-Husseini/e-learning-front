@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../../../shared/navbar'
 import CategoriesContainer from '../../../Student/CategoriesContainer'
 import "./style.css"
-import CardsContainer from '../../../shared/CardsContainer'
+import Container from '../../../shared/Container'
 import CourseModal from '../../../Student/CourseModal'
 import { useState } from 'react'
 
@@ -16,7 +16,7 @@ const StudentClasses = () => {
     <div>
       <Navbar one={'Classwork'} two={'Enrollments'}/>
       <CategoriesContainer/>
-      <CardsContainer handleOpenModal={handleOpenModal}/>
+      <Container element={'course'} handleOpenModal={handleOpenModal}/>
       <CourseModal openModal={openModal} handleCloseModal={handleCloseModal}/>
     </div>
   )
