@@ -1,20 +1,14 @@
 import React from 'react'
 import './style.css'
 
-const Card = ({course}) => {
-
-    let id = course.course_id
-
-    let link = "courses/" + {id}
+const Card = ({course, handleOpenModal}) => {
 
     return (
         <>
-            <a href={link}>
-                <div className="card">
+                <div className="card" onClick={handleOpenModal}>
                     <span>{course.name}</span>
                     <p>{course.description}</p>
                 </div>
-                </a>
         </>
     )
 }
