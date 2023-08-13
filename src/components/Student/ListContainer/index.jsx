@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import ClassworkListItem from '../ClassworkListItem'
 
-const ClassworkListContainer = () => {
+const ListContainer = ({data}) => {
 
   let sample_data =
     [
@@ -49,4 +49,4 @@ const ClassworkListContainer = () => {
   )
 }
 
-export default ClassworkListContainer
+export default ListContainer
