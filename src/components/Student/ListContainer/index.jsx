@@ -1,8 +1,9 @@
 import React from 'react'
 import './style.css'
 import ClassworkListItem from '../ClassworkListItem'
+import Person from '../Person'
 
-const ListContainer = ({data}) => {
+const ListContainer = ({data, listItem, handleOpenModal}) => {
 
   let sample_data =
     [
@@ -10,30 +11,35 @@ const ListContainer = ({data}) => {
         id: 2,
         course_id: 1,
         title: "FSW",
+        name: "FSW",
         due: "23:59 8-16-2023",
       },
       {
         id: 2,
         course_id: 2,
         title: "UIX",
+        name: "UIX",
         due: "23:59 8-16-2023",
       },
       {
         id: 2,
         course_id: 3,
         title: "FSD",
+        name: "FSD",
         due: "23:59 8-16-2023",
       },
       {
         id: 2,
         course_id: 3,
         title: "FSBatata",
+        name: "FSBatata",
         due: "23:59 8-16-2023",
       },
       {
         id: 2,
         course_id: 4,
         title: "FSTe3tir",
+        name: "FSTe3tir",
         due: "23:59 8-16-2023",
       },
     ]
@@ -42,7 +48,7 @@ const ListContainer = ({data}) => {
     <div className='list-container'>
       <div className="list-wrapper">
       {sample_data.map((item) => {
-            return <ClassworkListItem id={item.id} course_id={item.course_id} title={item.title} due={item.due}/>
+            return listItem=="person"? <Person item={item} handleOpenModal={handleOpenModal}/> : <ClassworkListItem item={item} />
         })}
       </div>
     </div>

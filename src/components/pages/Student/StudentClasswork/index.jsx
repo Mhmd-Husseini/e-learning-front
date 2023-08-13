@@ -7,7 +7,7 @@ const StudentClasswork = () => {
   return (
     <div>
       <Navbar one={'Classwork'} two={'Enrollments'}/>
-      <ListContainer />
+      <ListContainer listItem={'task'} />
     </div>
   )
 }

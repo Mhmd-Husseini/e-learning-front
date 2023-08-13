@@ -3,10 +3,6 @@ import './style.css'
 
 const Person = ({item, handleOpenModal}) => {
 
-    const id = item.id
-
-    let link = "/" + { id }
-
   return (
     
     <div className='person-item'>

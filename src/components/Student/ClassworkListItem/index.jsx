@@ -1,12 +1,12 @@
 import React from 'react'
 import './style.css'
 
-const ClassworkListItem = ({ id, course_id, title, due }) => {
+const ClassworkListItem = ({ item }) => {
 
     return (
         <div className='list-item'>
-            <span>{title}</span>
-            <span>{due}</span>
+            <span>{item.title}</span>
+            <span>{item.due}</span>
         </div>
     )
 }
