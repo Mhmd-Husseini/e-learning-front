@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import UsersTable from '../../../Admin/UsersTable';
 import { useNavigate } from "react-router-dom"
 import { sendRequest } from '../../../../config/request';
+import ModalForm from '../../../Admin/ModalForm'
 
 
 const AdminAdmin = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+
 
   useEffect(() => {
     fetchUsers();
@@ -19,8 +21,8 @@ const AdminAdmin = () => {
       console.log(response)
       
     } catch (error) {
-      console.log(error);
-      setError(error.message);
+      // console.log(error);
+      // setError(error.message);
       navigate ("/");
     }
   };
@@ -39,6 +41,7 @@ const AdminAdmin = () => {
   
   return (
     <div>
+      
       <UsersTable users={users}  onDelete={handleDelete}  />
       {/* onUpdate={handleEdit} */}
     </div>
