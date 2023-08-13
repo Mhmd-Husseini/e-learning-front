@@ -2,7 +2,8 @@
     display: flex;
   }
   
-  .content {
-    flex: 5;
+.content {
+    flex: 6;
     margin-top: 115px;
+    margin-right: 80px;
   }
