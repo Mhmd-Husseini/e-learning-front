@@ -7,11 +7,9 @@
   
   a, li{
     text-decoration: none;
-    /* margin: 10px; */
   }
 
   .sidebarWrapper {
-    padding: 20px;
     margin-top: 20px;
     color: #555;
   }
@@ -22,7 +20,8 @@
   
   .sidebarTitle {
     font-size: 26px;
-    color: rgb(187, 186, 186);
+    color: #555;
+    padding: 20px 20px 5px 20px;
   }
   
   .sidebarList {
@@ -31,7 +30,7 @@
   }
   
   .sidebarListItem {
-    padding: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
     display: flex;
     align-items: flex-start;
@@ -41,10 +40,14 @@
   .link{
     padding:15px 50px;
     border-radius: 40px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
   }
   
   .link.active {
-    background-color: rgb(240, 240, 255);
+    background-color: #333;
+    color: #fff;
   }
   
   

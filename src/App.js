@@ -1,15 +1,10 @@
 import './App.css';
 import Landing from './components/pages/landing';
-import AdminSidebar from './components/Admin/AdminSidebar';
-import AdminHome from './components/pages/Admin/AdminHome';
-import AdminUser from './components/pages/Admin/AdminAdmin';
 import AdminLayout from './components/pages/Admin/AdminLayout';
 import Children from './components/pages/Parent/Children';
 import Son from './components/pages/Parent/Son';
 import StudentClasses from './components/pages/Student/StudentClasses';
 import TeacherClasses from './components/pages/Teacher/TeacherClasses';
-
-
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 

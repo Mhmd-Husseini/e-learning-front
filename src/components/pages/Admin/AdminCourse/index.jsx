@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import UsersTable from '../../../Admin/UsersTable';
+import CoursesTable from '../../../Admin/CoursesTable';
 import { useNavigate } from "react-router-dom"
 import { sendRequest } from '../../../../config/request';
 import ModalForm from '../../../Admin/ModalForm'
 
 
-const AdminAdmin = () => {
+const AdminCourse = () => {
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
+  const [courses, setCourses] = useState([]);
 
 
   useEffect(() => {
-    fetchUsers();
+    fetchCourses();
   }, []);
 
-  const fetchUsers = async () => {
+  const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: "/admin/users/getUsers/4", body:"", });
-      setUsers(response);
+      const response = await sendRequest({ method: 'GET', route: "/admin/courses/all", body:"", });
+      setCourses(response.data);
       console.log(response)
       
     } catch (error) {
@@ -27,25 +27,26 @@ const AdminAdmin = () => {
     }
   };
 
-  const handleDelete = async (userId) => {
+  const handleDelete = async (courseId) => {
     try {
       const confirmDelete = window.confirm("Are you sure you want to delete this user?");
       if (confirmDelete) {
-        await sendRequest({ method: 'DELETE', route: `/admin/users/deleteUser/${userId}` });
-          fetchUsers();
+        await sendRequest({ method: 'DELETE', route: `/admin/courses/deleteCourse/${courseId}` });
+          fetchCourses();
       }
     } catch (error) {
       console.log(error);
     }
+    console.log(courses)
+
   };
   
   return (
     <div>
-      
-      <UsersTable users={users}  onDelete={handleDelete}  />
+      <CoursesTable courses={courses}  onDelete={handleDelete}  />
       {/* onUpdate={handleEdit} */}
     </div>
   );
 };
 
-export default AdminAdmin;
+export default AdminCourse;
