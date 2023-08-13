@@ -41,9 +41,7 @@ const AdminAdmin = () => {
   
   return (
     <div>
-      
       <UsersTable users={users}  onDelete={handleDelete}  />
-      {/* onUpdate={handleEdit} */}
     </div>
   );
 };

@@ -7,6 +7,7 @@ import AdminStudent from '../AdminStudent';
 import AdminTeacher from '../AdminTeacher';
 import AdminParent from '../AdminParent';
 import AdminCourse from '../AdminCourse';
+import Footer from '../../../shared/Footer';
 
 import "./style.css";
 
@@ -23,10 +24,10 @@ const AdminLayout = () => {
           <Route path="student" element={<AdminStudent />} />
           <Route path="parent" element={<AdminParent />} />
           <Route path="course" element={<AdminCourse />} />
-
         </Routes>
       </div>
     </div>
+    <Footer/>
     </>
   );
 };
