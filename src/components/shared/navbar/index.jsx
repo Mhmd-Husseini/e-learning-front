@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.css";
 
-const Navbar = ({ one, two}) => {
+const Navbar = ({ one, two, user}) => {
   return (
     <nav className="navbar">
       <h1>E-Learning</h1>
       <ul className="nav-links">
-        <li><Link to={"/" + one}>{one}</Link></li>
-        <li><Link to={"/" + two}>{two}</Link></li>
-        <li><Link to="/">Log Out</Link></li>
+        <li><NavLink to={"/"+ user + "/" + one}>{one}</NavLink></li>
+        <li><NavLink to={"/"+ user + "/" + two}>{two}</NavLink></li>
+        <li><NavLink to="/">Log Out</NavLink></li>
       </ul>
     </nav>
   );

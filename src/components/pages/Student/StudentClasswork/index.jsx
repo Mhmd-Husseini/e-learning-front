@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../../../shared/navbar'
 import Container from '../../../shared/Container'
 import { useEffect, useState } from 'react'
 import { sendRequest } from '../../../../config/request'
@@ -24,7 +23,6 @@ const StudentClasswork = () => {
   
   return (
     <div>
-      <Navbar one={'Classwork'} two={'Enrollments'}/>
       <Container element={'task'} data={tasks} />
     </div>
   )

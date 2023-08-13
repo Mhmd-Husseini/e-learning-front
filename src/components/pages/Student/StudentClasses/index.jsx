@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../../../shared/navbar'
 import CategoriesContainer from '../../../Student/CategoriesContainer'
 import "./style.css"
 import Container from '../../../shared/Container'
@@ -32,7 +31,6 @@ const StudentClasses = () => {
 
   return (
     <div>
-      <Navbar one={'Classwork'} two={'Enrollments'}/>
       <CategoriesContainer categories={categories}/>
       <Container element={'course'} data={courses} handleOpenModal={handleOpenModal}/>
       <CourseModal openModal={openModal} handleCloseModal={handleCloseModal}/>

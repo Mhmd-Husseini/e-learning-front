@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../../../shared/navbar'
 import Container from '../../../shared/Container'
 import ChatModal from '../../../Student/ChatModal'
 import { useEffect, useState } from 'react'
@@ -28,7 +27,6 @@ const StudentChat = () => {
 
   return (
     <div>
-        <Navbar one={'Classwork'} two={'Enrollments'}/>
         <Container element={'person'} data={people} handleOpenModal={handleOpenModal}/>
         <ChatModal openModal={openModal} handleCloseModal={handleCloseModal}/>
     </div>
