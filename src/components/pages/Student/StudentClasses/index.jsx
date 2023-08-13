@@ -14,6 +14,7 @@ const StudentClasses = () => {
   const handleCloseModal = () => setOpenModal(false)
 
   const [courses, setCourses] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     fetchCourses();
@@ -22,7 +23,8 @@ const StudentClasses = () => {
   const fetchCourses = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: "/courses", body:"", });
-      setCourses(response);
+      setCourses(response.courses);
+      setCategories(response.categories);
       
     } catch (error) {
     }
@@ -31,7 +33,7 @@ const StudentClasses = () => {
   return (
     <div>
       <Navbar one={'Classwork'} two={'Enrollments'}/>
-      <CategoriesContainer/>
+      <CategoriesContainer categories={categories}/>
       <Container element={'course'} data={courses} handleOpenModal={handleOpenModal}/>
       <CourseModal openModal={openModal} handleCloseModal={handleCloseModal}/>
     </div>
