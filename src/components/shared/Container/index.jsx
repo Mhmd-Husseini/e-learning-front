@@ -54,8 +54,8 @@ const CardsContainer = ({element, data, handleOpenModal}) => {
         <div className="course-content">
         {data.map((item, index) => {
             return element=="course"? <Card key={index} course={item} handleOpenModal={handleOpenModal}/>
-            : element=="person" ?  <Person item={item} handleOpenModal={handleOpenModal}/>
-            : element=="task" ? <ClassworkListItem item={item}/>
+            : element=="person" ?  <Person key={index} item={item} handleOpenModal={handleOpenModal}/>
+            : element=="task" ? <ClassworkListItem key={index} item={item}/>
             : <div></div>   
         })}
         </div>
