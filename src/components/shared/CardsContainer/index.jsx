@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Card'
 import './style.css'
 
-const CardsContainer = ({courses}) => {
+const CardsContainer = ({courses, handleOpenModal}) => {
 
     let sample_data =
         [
@@ -36,7 +36,7 @@ const CardsContainer = ({courses}) => {
     <div className='course-container'>
         <div className="course-content">
         {sample_data.map((item) => {
-            return <Card course={item}/>
+            return <Card course={item} handleOpenModal={handleOpenModal}/>
         })}
         </div>
     </div>
