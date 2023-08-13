@@ -2,9 +2,9 @@ import './App.css';
 import Landing from './components/pages/landing';
 import AdminLayout from './components/pages/Admin/AdminLayout';
 import Children from './components/pages/Parent/Children';
-import Son from './components/pages/Parent/Son';
+// import Son from './components/pages/Parent/Son';
 import StudentClasses from './components/pages/Student/StudentClasses';
-import TeacherClasses from './components/pages/Teacher/TeacherClasses';
+import TeacherCourses from './components/pages/Teacher/teacherCourses/index';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="/admin/*" element={<AdminLayout />} />
 
         <Route path="/teacher" >
-          <Route index element={<TeacherClasses />} />
+          <Route index element={<TeacherCourses />} />
         </Route> 
 
         <Route path="/Student" >

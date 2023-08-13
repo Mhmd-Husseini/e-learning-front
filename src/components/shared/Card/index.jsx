@@ -3,7 +3,7 @@ import './style.css'
 
 const Card = ({course}) => {
 
-    let id = course.course_id
+    let id = course.id
 
     let link = "courses/" + {id}
 

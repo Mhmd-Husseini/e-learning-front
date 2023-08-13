@@ -7,7 +7,7 @@ import { sendRequest } from '../../../../config/request';
 const AdminAdmin = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-
+  const [error, setError] = useState("");
   useEffect(() => {
     fetchUsers();
   }, []);
