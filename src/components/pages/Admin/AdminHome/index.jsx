@@ -3,6 +3,8 @@ import "./style.css";
 import { sendRequest } from '../../../../config/request';
 import InfoRectangle from '../../../Admin/InfoRectangle';
 import { PieChart, Pie, Tooltip } from 'recharts';
+import LinesChart from '../../../Admin/LinesChart';
+import { VictoryChart, VictoryLine, VictoryAxis, VictoryLegend } from 'victory';
 
 const AdminLayout = () => {
   const [data, setData] = useState([]);
@@ -30,46 +32,55 @@ const AdminLayout = () => {
     }
   };
 
+  const calculateCumulativeSum = (data) => {
+    let cumulativeSum = 0;
+    return data.map(item => {
+      cumulativeSum += item.count;
+      return { date: item.date, count: cumulativeSum };
+    });
+  };
+
+  const generateCombinedData = () => {
+    const teachersCumulative = calculateCumulativeSum(data.teachersByDate);
+    const studentsCumulative = calculateCumulativeSum(data.studentsByDate);
+    const parentsCumulative = calculateCumulativeSum(data.parentsByDate);
+
+    return teachersCumulative.map((item, index) => ({
+      date: item.date,
+      teachers: item.count,
+      students: studentsCumulative[index]?.count || 0,
+      parents: parentsCumulative[index]?.count || 0,
+    }));
+  };
+
   return (
     <>
-    {/* <table className="Table">
-    <thead>
-      <tr>
-        <th className="TableHeader">ID</th>
-        <th className="TableHeader">Name</th>
-        <th className="TableHeader">Email</th>
-        <th className="TableHeader">Parent</th>
-        <th className="TableHeader">Created At</th>
-        <th className="TableHeader">Actions</th>
-      </tr>
-    </thead>
-    <tr  className="TableRow">
-        <td className="TableCell"></td>
-        <td className="TableCell"></td>
-        <td className="TableCell"></td>
-        <td className="TableCell"></td>
-        <td className="TableCell"></td>              
-        <td className="ActionsCell">
-         <button onClick={() => handleOpenModal(user)}>Update</button>
-         <button onClick={() => onDelete(user.id)}>Delete</button>
-        </td>
-        </tr>
-      </table> */}
-    <div className="admin-page">
-
-      <InfoRectangle label="Teachers" info={data.teachersNum} />
-      <InfoRectangle label="Students" info={data.studentsNum} />
-      <InfoRectangle label="Courses" info={data.courseCount} />
-      <div className='pie'> 
-        <h2>Course Categories:</h2>
-        <div>
-          <PieChart width={500} height={500}>
-            <Pie dataKey="value" isAnimationActive={false} data={subdata} cx="50%" cy="50%" outerRadius={80} fill="#007bff" label />
-            <Tooltip />
-          </PieChart>
+      <div className="admin-page">
+        <InfoRectangle label="Teachers" info={data.teachersNum} />
+        <InfoRectangle label="Students" info={data.studentsNum} />
+        <InfoRectangle label="Courses" info={data.courseCount} />
+        <div className='pie'> 
+          <h2>Course Categories:</h2>
+          <div>
+            <PieChart width={500} height={400}>
+              <Pie dataKey="value" isAnimationActive={false} data={subdata} cx="50%" cy="50%" outerRadius={80} fill="#007bff" label />
+              <Tooltip />
+            </PieChart>
+          </div>
         </div>
+        <div className="chart-container">
+          {data.teachersByDate && data.studentsByDate && data.parentsByDate && (
+            <LinesChart 
+              data={generateCombinedData()}
+              dataKeys={['teachers', 'students', 'parents']}
+              colors={['blue', 'red', 'orange']}
+              strokeWidth={40}
+              axisColor="#333" 
+              labelColor="#555" 
+            />
+          )}
+        </div>   
       </div>
-    </div>
     </>
   );
 };

@@ -16,13 +16,11 @@ const AdminAdmin = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: "/admin/users/getUsers/1", body:"", });
+      const response = await sendRequest({ method: 'GET', route: "/admin/users/getUsers/2", body:"", });
       setUsers(response);
       console.log(response)
       
     } catch (error) {
-      // console.log(error);
-      // setError(error.message);
       navigate ("/");
     }
   };
@@ -41,9 +39,7 @@ const AdminAdmin = () => {
   
   return (
     <div>
-      
       <UsersTable users={users}  onDelete={handleDelete}  />
-      {/* onUpdate={handleEdit} */}
     </div>
   );
 };

@@ -45,7 +45,7 @@ const ModalForm = ({ user, handleCloseModal, OpenModal, onUpdate, isAdding }) =>
           <label>Password</label>
           <input type="password" className="input-field" name="password" value={data.password || ""} onChange={handleDataChange}/>
           <label>User Type</label>
-          <select className="input-field" name="user_type_id" value={data.user_type_id || ""} onChange={handleDataChange}  >
+          <select className="input-field" name="user_type_id" value={data.user_type_id || ""} onChange={handleDataChange} >
             <option value="" disabled>Select User Type</option>
             {userTypes.map((type) => (
               <option key={type.id} value={type.id}>
