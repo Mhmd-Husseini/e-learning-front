@@ -29,7 +29,7 @@ const StudentEnrollments = () => {
 
   return (
     <div>
-      <Container element={'course'} data={enrollments}/>
+      <Container element={'enrollment'} data={enrollments}/>
     </div>
   )
 }

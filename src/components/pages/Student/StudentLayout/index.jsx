@@ -15,7 +15,7 @@ const StudentLayout = () => {
                 <Routes>
                     <Route index element={<StudentClasses />} />
                     <Route path='Enrollments' element={<StudentEnrollments/>}/>
-                    <Route path="Classwork" element={<StudentClasswork />} />
+                    <Route path="Classwork/:course_id" element={<StudentClasswork />} />
                     <Route path="Submission" element={<StudentSubmission />} />
                     <Route path="Chat" element={<StudentChat />} />
                 </Routes>

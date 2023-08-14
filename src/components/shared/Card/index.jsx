@@ -2,22 +2,35 @@ import React from 'react'
 import './style.css'
 import { sendRequest } from '../../../config/request';
 import CourseModal from '../../Student/CourseModal';
-import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Card = ({ setSelectedCourse, course, handleOpenModal }) => {
-    
+const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
+
+    const navigate = useNavigate()
+
     const grabCourse = async () => {
         setSelectedCourse(course)
         handleOpenModal()
     }
 
-    return (
-        <>
-            <div className="card" onClick={grabCourse}>
-                <span className='course-title'>{course.title}</span>
-            </div>
-        </>
-    )
+    const navigateToTasks = () => navigate(`/Student/Classwork/${course.id}`)
+
+    if (!type) {
+        return (
+            <>
+                <div className="card" onClick={grabCourse}>
+                    <span className='course-title'>{course.title}</span>
+                </div>
+            </>
+        )
+    } else {
+        return(
+        <div className='card2' onClick={navigateToTasks}>
+            <div className='course-title2'><span>{course.title}</span></div>
+            <div>Assignment</div>
+        </div>
+        )
+    }
 }
 
 export default Card
