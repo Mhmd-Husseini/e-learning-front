@@ -18,12 +18,14 @@ const StudentChat = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: "/courses/1", body:"", });
-      setPeople(response);
+      const response = await sendRequest({ method: 'GET', route: `classmates/2`, body:"", });
+      setPeople(response.data);
+      console.log(people)
       
     } catch (error) {
     }
   };
+
 
   return (
     <div>
