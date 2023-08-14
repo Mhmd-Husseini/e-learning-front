@@ -8,6 +8,7 @@ import TeacherCourses from './components/pages/Teacher/teacherCourses/index';
 import TeacherCourseDetails from './components/pages/Teacher/CourseDetails/index';
 import TeacherClasswork from './components/pages/Teacher/ClassWork/index';
 import TeacherEnrollments from './components/pages/Teacher/Enrollments/index';
+import PostDetails from './components/pages/Teacher/PostDetails/index';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="CourseDetails/:teacherId" element={<TeacherCourseDetails />} />
           <Route path="Classwork" element={<TeacherClasswork />} />
           <Route path="enrollments" element={<TeacherEnrollments />} />
+          <Route path="PostDetails" element={<PostDetails />} />
         </Route> 
 
         <Route path="/Student" >
