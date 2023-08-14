@@ -3,7 +3,6 @@ import "./style.css";
 import { sendRequest } from '../../../../config/request';
 import InfoRectangle from '../../../Admin/InfoRectangle';
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"
 import { PieChart, Pie, Tooltip } from 'recharts';
 
 const AdminLayout = () => {
@@ -14,6 +13,7 @@ const AdminLayout = () => {
     fetchData();
   }, []);
 
+  
   const fetchData = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: "/admin/dashboard/analytics", body:"", });
@@ -29,7 +29,6 @@ const AdminLayout = () => {
       setSubdata(Subdata);
     } catch (error) {
       console.log(error);
-      // navigate ("/");
     }
   };
 
@@ -41,16 +40,7 @@ const AdminLayout = () => {
       <div className='pie'> 
       <h2>Course Categories:</h2>
       <div><PieChart width={500} height={500}>
-        <Pie
-          dataKey="value"
-          isAnimationActive={false}
-          data={subdata}
-          cx="50%"
-          cy="50%"
-          outerRadius={80}
-          fill="#007bff"
-          label
-        />
+        <Pie dataKey="value" isAnimationActive={false} data={subdata} cx="50%"cy="50%"outerRadius={80}fill="#007bff"label/>
         <Tooltip />
       </PieChart></div>
       </div>

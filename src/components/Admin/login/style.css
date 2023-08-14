@@ -42,7 +42,11 @@ body{
 
   h2{
     margin: 0;
+  }
 
+  p{
+    font-size: 22px;
+    font-weight: bold;
   }
 
   .invalid{

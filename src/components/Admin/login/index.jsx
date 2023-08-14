@@ -53,7 +53,7 @@ const Login = () => {
     return (
       <div className="hero">
         <div className="login">
-          <h2>Login </h2>
+          <p>Login </p>
           <p className="invalid">{msg} </p>
           <form>
             <label htmlFor="email">Email:</label>

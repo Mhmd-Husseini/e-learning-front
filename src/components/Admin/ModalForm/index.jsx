@@ -24,6 +24,8 @@ const ModalForm = ({ user, handleCloseModal, OpenModal, onUpdate }) => {
           <input type="text" className="input-field" name="name" value={data.name} onChange={handleDataChange}/>
           <label>Email</label>
           <input type="text" className="input-field" name="email" value={data.email} onChange={handleDataChange}/>
+          <label>Password</label>
+          <input type="Password" className="input-field" name="password" value={data.password} onChange={handleDataChange}/>
           <label>Parent_id</label>
           <input type="number" className="input-field" name="parent_id" value={data.parent_id}  onChange={handleDataChange} />
           <button type="submit" className="submit-button" onClick={handleSubmit}> Submit </button>
