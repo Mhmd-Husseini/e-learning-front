@@ -12,10 +12,10 @@ const StudentClasswork = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    fetchCourses();
+    fetchTasks();
   }, []);
 
-  const fetchCourses = async () => {
+  const fetchTasks = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: `getTasks/${course_id}`, body:"", });
       setTasks(response.tasks);

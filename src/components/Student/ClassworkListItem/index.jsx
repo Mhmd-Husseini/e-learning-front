@@ -7,7 +7,7 @@ const ClassworkListItem = ({ item }) => {
 
     const navigate = useNavigate()
 
-    const navigateToTask = () => navigate(`/Student/Submission/${item.id}`)
+    const navigateToTask = () => navigate(`/Student/Submission/${item.type}/${item.id}`)
 
     return (
         <div className='list-item' onClick={navigateToTask}>
