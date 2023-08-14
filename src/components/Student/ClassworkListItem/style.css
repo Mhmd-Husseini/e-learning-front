@@ -6,6 +6,7 @@
     background-color: #FFE66D;
     color: #333;
     padding: 15px;
+    cursor: pointer;
 }
 
 .list-item:hover {

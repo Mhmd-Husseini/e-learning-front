@@ -7,6 +7,8 @@ import { useParams } from 'react-router-dom';
 
 const StudentClasswork = () => {
 
+  const { course_id } = useParams();
+
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ const StudentClasswork = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: `getTasks/2`, body:"", });
+      const response = await sendRequest({ method: 'GET', route: `getTasks/${course_id}`, body:"", });
       setTasks(response.tasks);
       
     } catch (error) {

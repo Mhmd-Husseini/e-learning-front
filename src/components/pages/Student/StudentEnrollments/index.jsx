@@ -12,7 +12,6 @@ const StudentEnrollments = () => {
   }
 
   const [enrollments, setEnrollments] = useState([]);
-  const [selectedCourse, setSelectedCourse] = useState(defaultState)
 
   useEffect(() => {
     fetchCourses();
