@@ -14,7 +14,7 @@ const Card = ({ setSelectedCourse, course, handleOpenModal }) => {
     return (
         <>
             <div className="card" onClick={grabCourse}>
-                <span>{course.title}</span>
+                <span className='course-title'>{course.title}</span>
             </div>
         </>
     )

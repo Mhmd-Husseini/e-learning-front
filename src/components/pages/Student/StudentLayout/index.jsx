@@ -5,6 +5,7 @@ import StudentClasses from '../StudentClasses';
 import StudentClasswork from '../StudentClasswork';
 import StudentSubmission from '../StudentSubmission';
 import StudentChat from '../StudentChat'
+import StudentEnrollments from '../StudentEnrollments';
 
 const StudentLayout = () => {
     return (
@@ -13,6 +14,7 @@ const StudentLayout = () => {
             <div>
                 <Routes>
                     <Route index element={<StudentClasses />} />
+                    <Route path='Enrollments' element={<StudentEnrollments/>}/>
                     <Route path="Classwork" element={<StudentClasswork />} />
                     <Route path="Submission" element={<StudentSubmission />} />
                     <Route path="Chat" element={<StudentChat />} />
