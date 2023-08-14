@@ -6,7 +6,8 @@ import Children from './components/pages/Parent/Children';
 import StudentClasses from './components/pages/Student/StudentClasses';
 import TeacherCourses from './components/pages/Teacher/teacherCourses/index';
 import TeacherCourseDetails from './components/pages/Teacher/CourseDetails/index';
-
+import TeacherClasswork from './components/pages/Teacher/ClassWork/index';
+import TeacherEnrollments from './components/pages/Teacher/Enrollments/index';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="/teacher" >
           <Route index element={<TeacherCourses />} />
           <Route path="CourseDetails/:teacherId" element={<TeacherCourseDetails />} />
+          <Route path="Classwork" element={<TeacherClasswork />} />
+          <Route path="enrollments" element={<TeacherEnrollments />} />
         </Route> 
 
         <Route path="/Student" >

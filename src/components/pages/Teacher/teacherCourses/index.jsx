@@ -9,9 +9,9 @@ import axios from 'axios';
 const TeacherCourses = () => {
 
   let [courses , setCourses] = useState([]);
-  // const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token")
   
-  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjkxOTM3ODYxLCJleHAiOjE2OTE5NDE0NjEsIm5iZiI6MTY5MTkzNzg2MSwianRpIjoiWG4zUXQ0ZjBSMG8zVWZzMSIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.3QtGLAm4Cr0oyfUQSUsT-rx0OENpGjYik7yxjUPqGUQ';
+  // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjkxOTM3ODYxLCJleHAiOjE2OTE5NDE0NjEsIm5iZiI6MTY5MTkzNzg2MSwianRpIjoiWG4zUXQ0ZjBSMG8zVWZzMSIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.3QtGLAm4Cr0oyfUQSUsT-rx0OENpGjYik7yxjUPqGUQ';
   
   const getCourses = async () => {
     await axios.get("http://127.0.0.1:8000/api/teacher/courses", {
