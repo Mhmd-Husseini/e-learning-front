@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./style.css";
 import ModalForm from "../ModalForm";
@@ -6,10 +7,12 @@ import { sendRequest } from '../../../config/request';
 const UsersTable = ({ users, onDelete }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddingUser, setIsAddingUser] = useState(false);
 
-  const handleOpenModal = (user) => {
+  const handleOpenModal = (user, isAdding = false) => {
     setSelectedUser(user);
     setIsModalOpen(true);
+    setIsAddingUser(isAdding);
   };
 
   const handleCloseModal = () => {
@@ -33,6 +36,8 @@ const UsersTable = ({ users, onDelete }) => {
 
   return (
     <div className="TableContainer">
+      <button onClick={() => handleOpenModal(null, true)}>Add</button>
+
       <table className="Table">
         <thead>
           <tr>
@@ -60,7 +65,14 @@ const UsersTable = ({ users, onDelete }) => {
           ))}
         </tbody>
       </table>
-      {isModalOpen && (<ModalForm user={selectedUser} handleCloseModal={handleCloseModal} OpenModal={isModalOpen} onUpdate={handleUpdateUser}/>
+      {isModalOpen && (
+        <ModalForm
+          user={selectedUser}
+          handleCloseModal={handleCloseModal}
+          OpenModal={isModalOpen}
+          onUpdate={handleUpdateUser}
+          isAdding={isAddingUser}
+        />
       )}
     </div>
   );
