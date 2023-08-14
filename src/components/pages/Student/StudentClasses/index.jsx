@@ -14,6 +14,7 @@ const StudentClasses = () => {
 
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState()
 
   useEffect(() => {
     fetchCourses();
@@ -32,8 +33,8 @@ const StudentClasses = () => {
   return (
     <div>
       <CategoriesContainer categories={categories}/>
-      <Container element={'course'} data={courses} handleOpenModal={handleOpenModal}/>
-      <CourseModal openModal={openModal} handleCloseModal={handleCloseModal}/>
+      <Container setSelectedCourse={setSelectedCourse} element={'course'} data={courses} openModal={openModal} handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>
+      <CourseModal details={selectedCourse} openModal={openModal} handleCloseModal={handleCloseModal} />
     </div>
   )
 }
