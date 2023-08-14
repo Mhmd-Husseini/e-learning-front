@@ -1,0 +1,15 @@
+.body{
+    display: flex;
+    flex-direction: column;
+}
+
+.body .studnets{
+    display: flex;
+    justify-content: center;
+    flex-direction: column
+}
+
+.title{
+    text-align: left;
+    width: 65%;
+}

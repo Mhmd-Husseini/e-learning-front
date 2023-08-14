@@ -4,8 +4,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../ClassWork/style.css';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Classwork = () => {
+  const { id } = useParams();
+  console.log(id);
 
   let [assignments , setAssignments] = useState([]);
   let [quizzes , setQuizzes] = useState([]);
@@ -14,8 +17,9 @@ const Classwork = () => {
   let [name , setName] = useState('');
 
   const token = localStorage.getItem("token")
-  // const courseid = localStorage.getItem("courseid")
-  // `http://127.0.0.1:8000/api/teacher/courses/${courseid}`
+  const courseid = localStorage.getItem("courseid")
+  // console.log(courseid);
+  // `http://127.0.0.1:8000/api/teacher/courses/${id}`
   const getPosts = async () => {
     await axios.get(`http://127.0.0.1:8000/api/teacher/courses/2`, {
       "headers": {
@@ -37,7 +41,7 @@ const Classwork = () => {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [id]);
 
   return (
       <div className='classwork'>

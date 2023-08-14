@@ -7,7 +7,7 @@ const TeacherCard = ({ id, name, description }) => {
   let link = "courses/" + courseid;
   localStorage.setItem("courseid", courseid)
   return (
-    <Link to={`/teacher/CourseDetails/${id}`}>
+    <Link to={`/teacher/CourseDetails/${courseid}`} key={id} >
       <a href={link}>
         <div className="card">
           <span>{name}</span>
