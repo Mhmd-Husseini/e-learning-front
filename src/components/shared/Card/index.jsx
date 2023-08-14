@@ -14,6 +14,7 @@ const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
     }
 
     const navigateToTasks = () => navigate(`/Student/Classwork/${course.id}`)
+    const navigateToChat = () => navigate(`/Student/Chat/${course.id}`)
 
     if (!type) {
         return (
@@ -24,11 +25,14 @@ const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
             </>
         )
     } else {
-        return(
-        <div className='card2' onClick={navigateToTasks}>
-            <div className='course-title2'><span>{course.title}</span></div>
-            <div>Assignment</div>
-        </div>
+        return (
+            <div className='class-container'>
+                <div className='card2' onClick={navigateToTasks}>
+                    <div className='course-title2'><span>{course.title}</span></div>
+                    <div>Assignment</div>
+                </div>
+                <button onClick={navigateToChat}>Chat Room</button>
+            </div>
         )
     }
 }
