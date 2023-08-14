@@ -10,7 +10,7 @@ const AdminSidebar = () => {
           <h2 className="sidebarTitle">Dashboard</h2>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <NavLink to="/admin/" className="link" activeClassName="active">
+              <NavLink to="/admin" exact className="link" activeClassName="active">
                 Home
               </NavLink>
             </li>
