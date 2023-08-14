@@ -1,8 +1,18 @@
 import React from 'react'
 import './style.css'
 import Modal from 'react-modal'
+import { sendRequest } from '../../../config/request'
 
 const CourseModal = ({ details, openModal, handleCloseModal }) => {
+
+    async function enrollStudent(){
+            try {
+              const response = await sendRequest({ method: 'POST', route: `enroll-course/${details.id}`, body:"", });
+              console.log(response)
+              handleCloseModal()
+            } catch (error) {
+            }
+    }
 
     return (
         <div>
@@ -15,7 +25,7 @@ const CourseModal = ({ details, openModal, handleCloseModal }) => {
                             <span className='title-medium'>Course Description: {details.description}</span>
                             <p className=''></p>
                         </div>
-                        <button className='enroll-btn'>Enroll</button>
+                        <button className='enroll-btn' onClick={enrollStudent}>Enroll</button>
                     </div>
                 </div>
             </Modal >

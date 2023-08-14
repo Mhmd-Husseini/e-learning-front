@@ -8,13 +8,18 @@ import { sendRequest } from '../../../../config/request'
 
 const StudentClasses = () => {
 
+  const defaultState ={
+    title: "",
+    description:""
+  }
+
   const [openModal, setOpenModal] = useState(false)
   const handleOpenModal = () => setOpenModal(true)
   const handleCloseModal = () => setOpenModal(false)
 
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedCourse, setSelectedCourse] = useState()
+  const [selectedCourse, setSelectedCourse] = useState(defaultState)
 
   useEffect(() => {
     fetchCourses();
