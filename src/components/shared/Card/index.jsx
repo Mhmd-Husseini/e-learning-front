@@ -6,8 +6,7 @@ const Card = ({course, handleOpenModal}) => {
     return (
         <>
                 <div className="card" onClick={handleOpenModal}>
-                    <span>{course.name}</span>
-                    <p>{course.description}</p>
+                    <span>{course.title}</span>
                 </div>
         </>
     )
