@@ -21,8 +21,8 @@ const StudentEnrollments = () => {
   const fetchCourses = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: "/enrolled-courses", body:"", });
-      setEnrollments(response);
-      
+      setEnrollments(response.data);
+      console.log(enrollments)
     } catch (error) {
     }
   };

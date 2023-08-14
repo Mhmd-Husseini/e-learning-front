@@ -14,7 +14,7 @@ const StudentClasswork = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: `getTasks/1`, body:"", });
+      const response = await sendRequest({ method: 'GET', route: `getTasks/2`, body:"", });
       setTasks(response.tasks);
       
     } catch (error) {
