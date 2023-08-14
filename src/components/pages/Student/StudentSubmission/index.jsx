@@ -8,7 +8,7 @@ const StudentSubmission = () => {
 
   const { item_id , type} = useParams();
 
-  const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState([]);
 
   useEffect(() => {
     fetchTask();
@@ -17,7 +17,8 @@ const StudentSubmission = () => {
   const fetchTask = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: `getOneTask/${type}/${item_id}`, body:"", });
-      setTasks(response.tasks);
+      setTask(response.task);
+      console.log(task)
       
     } catch (error) {
     }
@@ -25,7 +26,7 @@ const StudentSubmission = () => {
 
   return (
     <div>
-      <SubmissionContent />
+      <SubmissionContent task={task} />
     </div>
   )
 }

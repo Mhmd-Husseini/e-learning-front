@@ -1,14 +1,14 @@
 import React from 'react'
 import './style.css'
 
-const SubmissionContent = () => {
+const SubmissionContent = ({task}) => {
     return (
         <div className='submission-container'>
             <div className="submission-wrapper">
                 <div className='submission-instructions'>
-                    <span className='title-large'>Assignment Title</span>
+                    <span className='title-large'>{task.title}</span>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et itaque porro fugit cupiditate voluptate. Repellendus unde qui, placeat optio enim id ullam dolorem eos numquam quae neque expedita, nemo tenetur!
+                        {task.description}
                     </p>
                 </div>
                 <div className='submission-upload'>
