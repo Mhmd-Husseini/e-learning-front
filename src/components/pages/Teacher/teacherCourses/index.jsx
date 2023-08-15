@@ -33,7 +33,7 @@ const TeacherCourses = () => {
   }, []);
 
   return (
-    <div>
+    <div className='courses_body'>
       <Navbar one={'Classwork'} two={'Enrollments'}/>
       <CardsContainer courses={courses}/>
     </div>

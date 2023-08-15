@@ -22,10 +22,10 @@ const Enrollments = () => {
   }
 
   const token = localStorage.getItem("token")
-  // const courseid = localStorage.getItem("courseid")
-  // `http://127.0.0.1:8000/api/teacher/courses/${courseid}`
+  const courseid = localStorage.getItem("courseid")
+    // `http://127.0.0.1:8000/api/teacher/courses/${courseid}`
   const getStudnets = async () => {
-    await axios.get(`http://127.0.0.1:8000/api/teacher/courses/2`, {
+    await axios.get(`http://127.0.0.1:8000/api/teacher/courses/${courseid}`, {
       "headers": {
           'Authorization': `Bearer ${token}`
       }

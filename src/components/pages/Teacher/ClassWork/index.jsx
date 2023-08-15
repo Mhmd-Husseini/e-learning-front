@@ -17,9 +17,7 @@ const Classwork = () => {
 
   const token = localStorage.getItem("token")
   const courseid = localStorage.getItem("courseid")
-  console.log(courseid)
-  // console.log(courseid);
-  // `http://127.0.0.1:8000/api/teacher/courses/${id}`
+
   const getPosts = async () => {
     await axios.get(`http://127.0.0.1:8000/api/teacher/courses/${courseid}`, {
       "headers": {
@@ -41,7 +39,7 @@ const Classwork = () => {
 
   useEffect(() => {
     getPosts();
-  }, [id]);
+  }, [courseid]);
 
   return (
       <div className='classwork'>
@@ -58,20 +56,20 @@ const Classwork = () => {
           <div className='posts_section'>
             <h2 className='postsTitle'>Lectures</h2>
             {lectures.map((lecture) => (
-                <ClassworkPost post={lecture}/>
+                <ClassworkPost post={lecture} type={'lecture'}/>
             ))}
           </div>
           <div className='posts_section'>
             <h2 className='postsTitle'>Materials</h2>
             {materials.map((material) => (
-              <ClassworkPost post={material}/>
+              <ClassworkPost post={material} type={'material'}/>
             ))}
           </div>
           <div className='posts_section'>
             <h2 className='postsTitle'>Quizzes</h2>
             <div className='post_body'>
               {quizzes.map((quiz) => (
-                  <ClassworkPost post={quiz}/>
+                  <ClassworkPost post={quiz} type={'quiz'}/>
               ))} 
             </div>
             
@@ -79,7 +77,7 @@ const Classwork = () => {
           <div className='posts_section'>
             <h2 className='postsTitle'>Assignments</h2>
             {assignments.map((assignment) => (
-                <ClassworkPost post={assignment}/>
+                <ClassworkPost post={assignment} type={'assignment'}/>
             ))}
           </div>
         </div>
