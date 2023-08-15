@@ -6,6 +6,7 @@ import Son from './components/pages/Parent/Son';
 import StudentClasses from './components/pages/Student/StudentClasses';
 import TeacherClasses from './components/pages/Teacher/TeacherClasses';
 import StudentLayout from './components/pages/Student/StudentLayout';
+import './App.css' 
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
