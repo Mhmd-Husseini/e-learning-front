@@ -22,8 +22,9 @@ const CourseModal = ({ details, openModal, handleCloseModal }) => {
                         <div className='before-content' onClick={handleCloseModal}>X</div>
                         <span className='title-large'>Taught By {details.teacher_id}</span>
                         <div>
-                            <span className='title-medium'>Course Description: {details.description}</span>
-                            <p className=''></p>
+                            <div className='title-medium'>Course Description: <span>{details.description}</span> </div>
+                            <div className='title-medium'>Course Category: <span>{details.category_id}</span></div>
+                            <div className='title-medium'>Seats: <span>{details.seats}</span></div>
                         </div>
                         <button className='enroll-btn' onClick={enrollStudent}>Enroll</button>
                     </div>

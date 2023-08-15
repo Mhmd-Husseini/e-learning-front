@@ -12,7 +12,7 @@ const ClassworkListItem = ({ item }) => {
     return (
         <div className='list-item' onClick={navigateToTask}>
             <span>{item.title}</span>
-            <span>{item.due}</span>
+            <span>{item.date}</span>
         </div>
     )
 }

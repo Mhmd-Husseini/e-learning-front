@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../../../shared/Container'
 import ChatModal from '../../../Student/ChatModal'
+import Person from '../../../Student/Person'
 import { useEffect, useState } from 'react'
 import { sendRequest } from '../../../../config/request'
 import { useParams } from 'react-router-dom';
@@ -14,6 +15,7 @@ const StudentChat = () => {
   const handleCloseModal = () => setOpenModal(false)
 
   const [people, setPeople] = useState([]);
+  const [teacher, setTeacher] = useState([]);
 
   useEffect(() => {
     fetchCourses();
@@ -21,10 +23,10 @@ const StudentChat = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: `classmates/${course_id}`, body:"", });
+      const response = await sendRequest({ method: 'GET', route: `classmates/${course_id}`, body: "", });
       setPeople(response.data);
-      console.log(people)
-      
+      setTeacher(response.teacher)
+
     } catch (error) {
     }
   };
@@ -32,8 +34,9 @@ const StudentChat = () => {
 
   return (
     <div>
-        <Container element={'person'} data={people} handleOpenModal={handleOpenModal}/>
-        <ChatModal openModal={openModal} handleCloseModal={handleCloseModal}/>
+      <Person item={teacher} handleOpenModal={handleOpenModal}></Person>
+      <Container teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
+      <ChatModal openModal={openModal} handleCloseModal={handleCloseModal} />
     </div>
   )
 }
