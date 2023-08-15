@@ -1,19 +1,33 @@
 import React, { useState } from 'react'
 import './style.css'
 import Modal from 'react-modal'
+import { sendRequest } from '../../../config/request'
 
-const ChatModal = ({person, openModal, handleCloseModal }) => {
+const ChatModal = ({ person, openModal, handleCloseModal }) => {
 
-  const [message, setMessage] = useState()
-
-  async function sendRequest() {
-    try {
-      const response = await sendRequest({ method: 'POST', route: `chat/${person.id}/send`, body: message, });
-      console.log(response)
-      handleCloseModal()
-  } catch (error) {
+  const defaultState = {
+    message: '',
   }
-    handleCloseModal();
+
+  const [data, setData] = useState(defaultState)
+
+  const handleDataChange = (e) => {
+    setData({ [e.target.name]: e.target.value });
+  };
+
+  async function sendMessage() {
+
+    try {
+      const response = await sendRequest({
+        method: "POST",
+        route: `chat/${person.id}/send`,
+        body: data,
+      });
+      setData({message: ""})
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   }
 
   return (
@@ -21,10 +35,8 @@ const ChatModal = ({person, openModal, handleCloseModal }) => {
       <Modal isOpen={openModal} className="modal">
         <div className='chat-container'>
           <div className='before-content' onClick={handleCloseModal}>X</div>
-          <textarea name="" onChange={(e) => {
-            setMessage(e.target.value)
-          }} className='message-input' placeholder='Enter your message here'></textarea>
-          <div className='filler'><i class="fa-solid fa-paper-plane send-icon" onClick={sendRequest}></i></div>
+          <textarea name="message" value={data.message || ""} onChange={handleDataChange} className='message-input' placeholder='Enter your message here'></textarea>
+          <div className='filler'><i class="fa-solid fa-paper-plane send-icon" onClick={sendMessage}></i></div>
         </div>
       </Modal>
     </div>
