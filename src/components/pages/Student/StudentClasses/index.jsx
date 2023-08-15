@@ -13,9 +13,7 @@ const StudentClasses = () => {
       "teacher_id": "nour younes",
       "title": "Algebra",
       "description": "lorem",
-      "seats": 10,
-      "created_at": "2023-08-12T21:47:19.000000Z",
-      "updated_at": "2023-08-12T21:47:19.000000Z"
+      "seats": 10
   }
 
   const [openModal, setOpenModal] = useState(false)

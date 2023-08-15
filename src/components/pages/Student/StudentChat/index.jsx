@@ -17,6 +17,7 @@ const StudentChat = () => {
 
   const [people, setPeople] = useState([]);
   const [teacher, setTeacher] = useState([]);
+  const [selectedPerson, setSelectedPerson] = useState()
 
   useEffect(() => {
     fetchCourses();
@@ -36,10 +37,10 @@ const StudentChat = () => {
   return (
     <div>
       <div className='teacher'>
-        <Person teacher={'teacher'} item={teacher} handleOpenModal={handleOpenModal}></Person>
+        <Person setSelectedPerson={setSelectedPerson} teacher={'teacher'} item={teacher} handleOpenModal={handleOpenModal}></Person>
       </div>
-      <Container teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
-      <ChatModal openModal={openModal} handleCloseModal={handleCloseModal} />
+      <Container setSelectedPerson={setSelectedPerson} teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
+      <ChatModal person={selectedPerson} openModal={openModal} handleCloseModal={handleCloseModal} />
     </div>
   )
 }
