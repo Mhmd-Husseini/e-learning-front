@@ -26,7 +26,7 @@ const StudentClasswork = () => {
   
   return (
     <div>
-      <Container element={'task'} data={tasks} />
+      <Container course_id={course_id} element={'task'} data={tasks} />
     </div>
   )
 }
