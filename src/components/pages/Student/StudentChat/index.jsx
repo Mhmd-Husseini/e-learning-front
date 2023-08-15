@@ -5,6 +5,7 @@ import Person from '../../../Student/Person'
 import { useEffect, useState } from 'react'
 import { sendRequest } from '../../../../config/request'
 import { useParams } from 'react-router-dom';
+import './style.css'
 
 const StudentChat = () => {
 
@@ -34,7 +35,9 @@ const StudentChat = () => {
 
   return (
     <div>
-      <Person item={teacher} handleOpenModal={handleOpenModal}></Person>
+      <div className='teacher'>
+        <Person item={teacher} handleOpenModal={handleOpenModal}></Person>
+      </div>
       <Container teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
       <ChatModal openModal={openModal} handleCloseModal={handleCloseModal} />
     </div>
