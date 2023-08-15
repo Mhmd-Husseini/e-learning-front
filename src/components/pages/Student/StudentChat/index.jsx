@@ -17,12 +17,15 @@ const StudentChat = () => {
 
   const [people, setPeople] = useState([]);
   const [teacher, setTeacher] = useState([]);
+  const [selectedPerson, setSelectedPerson] = useState()
+  const [messages, setMessages] = useState([])
 
   useEffect(() => {
-    fetchCourses();
+    fetchClassmates();
+    fetchMsgs();
   }, []);
 
-  const fetchCourses = async () => {
+  const fetchClassmates = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: `classmates/${course_id}`, body: "", });
       setPeople(response.data);
@@ -32,14 +35,22 @@ const StudentChat = () => {
     }
   };
 
+  const fetchMsgs = async () => {
+    try {
+      const response = await sendRequest({ method: 'GET', route: `/chat/${selectedPerson.id}`, body: "", });
+      setMessages(response.data)
+      console.log(messages)
+    } catch (error) {
+    }
+  };
 
   return (
     <div>
       <div className='teacher'>
-        <Person item={teacher} handleOpenModal={handleOpenModal}></Person>
+        <Person setMessages={setMessages} setSelectedPerson={setSelectedPerson} teacher={'teacher'} item={teacher} handleOpenModal={handleOpenModal}></Person>
       </div>
-      <Container teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
-      <ChatModal openModal={openModal} handleCloseModal={handleCloseModal} />
+      <Container setSelectedPerson={setSelectedPerson} teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
+      <ChatModal messages={messages} person={selectedPerson} openModal={openModal} handleCloseModal={handleCloseModal} />
     </div>
   )
 }

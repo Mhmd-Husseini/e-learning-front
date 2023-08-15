@@ -5,13 +5,13 @@ import { sendRequest } from '../../../config/request'
 
 const CourseModal = ({ details, openModal, handleCloseModal }) => {
 
-    async function enrollStudent(){
-            try {
-              const response = await sendRequest({ method: 'POST', route: `enroll-course/${details.id}`, body:"", });
-              console.log(response)
-              handleCloseModal()
-            } catch (error) {
-            }
+    async function enrollStudent() {
+        try {
+            const response = await sendRequest({ method: 'POST', route: `enroll-course/${details.id}`, body: "", });
+            console.log(response)
+            handleCloseModal()
+        } catch (error) {
+        }
     }
 
     return (

@@ -1,23 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
 import Modal from 'react-modal'
+import { sendRequest } from '../../../config/request'
 
-const ChatModal = ({openModal, handleCloseModal}) => {
+const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
+  console.log(messages)
+  const defaultState = {
+    message: '',
+  }
+  const [data, setData] = useState(defaultState)
 
-  function sendRequest() {
-    // sendRequest
-    handleCloseModal();
+  const handleDataChange = (e) => {
+    setData({ [e.target.name]: e.target.value });
+  };
+
+  async function sendMessage() {
+
+    try {
+      const response = await sendRequest({
+        method: "POST",
+        route: `chat/${person.id}/send`,
+        body: data,
+      });
+      setData({ message: "" })
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   }
 
   return (
     <div>
-        <Modal isOpen={openModal} className="modal">
-          <div className='chat-container'>
-            <div className='before-content' onClick={handleCloseModal}>X</div>
-            <textarea name="" id="" className='message-input' placeholder='Enter your message here'></textarea>
-            <div className='filler'><i class="fa-solid fa-paper-plane send-icon" onClick={sendRequest}></i></div>
+      <Modal isOpen={openModal} className="modal">
+        <div className='chat-container'>
+          <div className='chat-header'>Messages
+            {/* {messages.map((msg, index) => {
+              return <div>{msg.message}</div>
+            })} */}
           </div>
-        </Modal>
+          <div className='before-content' onClick={handleCloseModal}>X</div>
+          <textarea name="message" value={data.message || ""} onChange={handleDataChange} className='message-input' placeholder='Enter your message here'></textarea>
+          <div className='filler'><i className="fa-solid fa-paper-plane send-icon" onClick={sendMessage}></i></div>
+        </div>
+      </Modal>
     </div>
   )
 }
