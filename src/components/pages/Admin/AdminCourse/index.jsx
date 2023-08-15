@@ -21,8 +21,6 @@ const AdminCourse = () => {
       console.log(response)
       
     } catch (error) {
-      // console.log(error);
-      // setError(error.message);
       navigate ("/");
     }
   };
@@ -44,7 +42,6 @@ const AdminCourse = () => {
   return (
     <div>
       <CoursesTable courses={courses}  onDelete={handleDelete}  />
-      {/* onUpdate={handleEdit} */}
     </div>
   );
 };

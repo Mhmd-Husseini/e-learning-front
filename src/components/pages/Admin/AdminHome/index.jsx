@@ -4,7 +4,6 @@ import { sendRequest } from '../../../../config/request';
 import InfoRectangle from '../../../Admin/InfoRectangle';
 import { PieChart, Pie, Tooltip } from 'recharts';
 import LinesChart from '../../../Admin/LinesChart';
-import { VictoryChart, VictoryLine, VictoryAxis, VictoryLegend } from 'victory';
 
 const AdminLayout = () => {
   const [data, setData] = useState([]);
@@ -17,9 +16,7 @@ const AdminLayout = () => {
   const fetchData = async () => {
     try {
       const response = await sendRequest({ method: 'GET', route: "/admin/dashboard/analytics", body: "" });
-      setData(response.data);
-      console.log(response);
-      
+      setData(response.data);      
       const Subdata = [
         { name: "Math", value: response.data.mathCourses },
         { name: "Science", value: response.data.scienceCourses },
@@ -70,14 +67,7 @@ const AdminLayout = () => {
         </div>
         <div className="chart-container">
           {data.teachersByDate && data.studentsByDate && data.parentsByDate && (
-            <LinesChart 
-              data={generateCombinedData()}
-              dataKeys={['teachers', 'students', 'parents']}
-              colors={['blue', 'red', 'orange']}
-              strokeWidth={40}
-              axisColor="#333" 
-              labelColor="#555" 
-            />
+            <LinesChart data={generateCombinedData()}dataKeys={['teachers','students','parents']}colors={['blue','red','orange']}strokeWidth={40}axisColor="#333" labelColor="#555"/>
           )}
         </div>   
       </div>

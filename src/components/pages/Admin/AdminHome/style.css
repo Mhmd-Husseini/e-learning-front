@@ -10,10 +10,6 @@
     cursor: pointer;
   }
   
-  h2{
-    color: aliceblue;
-  }
-  
   .pie:hover {
     transform: translateY(-10px);
   }
