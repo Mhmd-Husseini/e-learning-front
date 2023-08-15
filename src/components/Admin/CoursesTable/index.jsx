@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./style.css";
-import ModalForm from "../ModalForm";
+import ModalFormCourses from "../ModalFormCourses";
 import { sendRequest } from '../../../config/request';
 
 const CoursesTable = ({ courses, onDelete }) => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddingCourse, setIsAddingCourse] = useState(false);
 
-  const handleOpenModal = (course) => {
+  const handleOpenModal = (course, isAdding = false) => {
     setSelectedCourse(course);
     setIsModalOpen(true);
+    setIsAddingCourse(isAdding);
   };
 
   const handleCloseModal = () => {
@@ -33,6 +35,8 @@ const CoursesTable = ({ courses, onDelete }) => {
 
   return (
     <div className="TableContainer">
+      <button onClick={() => handleOpenModal(null, true)}>Add</button>
+
       <table className="Table">
         <thead>
           <tr>
@@ -43,6 +47,7 @@ const CoursesTable = ({ courses, onDelete }) => {
             <th className="TableHeader"> Category</th>
             <th className="TableHeader">Created At</th>
             <th className="TableHeader">Enrollments</th>
+            <th className="TableHeader">Seats</th>
             <th className="TableHeader">Actions</th>
           </tr>
         </thead>
@@ -55,7 +60,8 @@ const CoursesTable = ({ courses, onDelete }) => {
               <td className="TableCell">{course.teacher_id}</td>
               <td className="TableCell">{course.category.category}</td>
               <td className="TableCell">{course.created_at}</td>
-              <td className="TableCell">{course.enrolled_students_count}</td>              
+              <td className="TableCell">{course.enrolled_students_count}</td>     
+              <td className="TableCell">{course.seats}</td>                       
               <td className="ActionsCell">
                 <button onClick={() => handleOpenModal(course)}>Update</button>
                 <button onClick={() => onDelete(course.id)}>Delete</button>
@@ -64,7 +70,7 @@ const CoursesTable = ({ courses, onDelete }) => {
           ))}
         </tbody>
       </table>
-      {isModalOpen && (<ModalForm user={selectedCourse} handleCloseModal={handleCloseModal} OpenModal={isModalOpen} onUpdate={handleUpdateCourse}/>
+      {isModalOpen && (<ModalFormCourses course={selectedCourse} handleCloseModal={handleCloseModal} OpenModal={isModalOpen} onUpdate={handleUpdateCourse}isAdding={isAddingCourse}/>
       )}
     </div>
   );

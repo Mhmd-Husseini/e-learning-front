@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./style.css";
 import ModalForm from "../ModalForm";
@@ -66,13 +65,7 @@ const UsersTable = ({ users, onDelete }) => {
         </tbody>
       </table>
       {isModalOpen && (
-        <ModalForm
-          user={selectedUser}
-          handleCloseModal={handleCloseModal}
-          OpenModal={isModalOpen}
-          onUpdate={handleUpdateUser}
-          isAdding={isAddingUser}
-        />
+        <ModalForm user={selectedUser} handleCloseModal={handleCloseModal} OpenModal={isModalOpen}onUpdate={handleUpdateUser}isAdding={isAddingUser} />
       )}
     </div>
   );
