@@ -3,12 +3,11 @@ import './style.css'
 import Modal from 'react-modal'
 import { sendRequest } from '../../../config/request'
 
-const ChatModal = ({ person, openModal, handleCloseModal }) => {
-
+const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
+  console.log(messages)
   const defaultState = {
     message: '',
   }
-
   const [data, setData] = useState(defaultState)
 
   const handleDataChange = (e) => {
@@ -23,7 +22,7 @@ const ChatModal = ({ person, openModal, handleCloseModal }) => {
         route: `chat/${person.id}/send`,
         body: data,
       });
-      setData({message: ""})
+      setData({ message: "" })
       handleCloseModal();
     } catch (error) {
       console.error("Error sending message:", error);
@@ -34,9 +33,14 @@ const ChatModal = ({ person, openModal, handleCloseModal }) => {
     <div>
       <Modal isOpen={openModal} className="modal">
         <div className='chat-container'>
+          <div className='chat-header'>Messages
+            {/* {messages.map((msg, index) => {
+              return <div>{msg.message}</div>
+            })} */}
+          </div>
           <div className='before-content' onClick={handleCloseModal}>X</div>
           <textarea name="message" value={data.message || ""} onChange={handleDataChange} className='message-input' placeholder='Enter your message here'></textarea>
-          <div className='filler'><i class="fa-solid fa-paper-plane send-icon" onClick={sendMessage}></i></div>
+          <div className='filler'><i className="fa-solid fa-paper-plane send-icon" onClick={sendMessage}></i></div>
         </div>
       </Modal>
     </div>
