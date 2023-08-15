@@ -1,5 +1,4 @@
 import React from 'react'
-import CategoriesContainer from '../../../Student/CategoriesContainer'
 import "./style.css"
 import Container from '../../../shared/Container'
 import CourseModal from '../../../Student/CourseModal'
@@ -37,9 +36,22 @@ const StudentClasses = () => {
 
   return (
     <div>
-      <CategoriesContainer categories={categories}/>
-      <Container setSelectedCourse={setSelectedCourse} element={'course'} data={courses} openModal={openModal} handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>
-      <CourseModal details={selectedCourse} openModal={openModal} handleCloseModal={handleCloseModal} />
+      {/* categories */}
+      <div className='categories-container'>
+        {categories.map((item, index) => {
+            return <button>{item}</button>
+        })}
+    </div>
+    {/* courses container  */}
+      <Container 
+      setSelectedCourse={setSelectedCourse} 
+      element={'course'} 
+      data={courses} 
+      handleOpenModal={handleOpenModal} />
+      {/* Modal */}
+      <CourseModal details={selectedCourse} 
+      openModal={openModal} 
+      handleCloseModal={handleCloseModal} />
     </div>
   )
 }

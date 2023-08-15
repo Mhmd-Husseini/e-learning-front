@@ -36,7 +36,7 @@ const StudentChat = () => {
   return (
     <div>
       <div className='teacher'>
-        <Person item={teacher} handleOpenModal={handleOpenModal}></Person>
+        <Person teacher={'teacher'} item={teacher} handleOpenModal={handleOpenModal}></Person>
       </div>
       <Container teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
       <ChatModal openModal={openModal} handleCloseModal={handleCloseModal} />

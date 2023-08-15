@@ -4,7 +4,7 @@ import ClassworkListItem from '../../Student/ClassworkListItem'
 import Person from '../../Student/Person'
 import './style.css'
 
-const Container = ({setSelectedCourse, teacher, element, data, openModal, handleOpenModal, handleCloseModal}) => {
+const Container = ({setSelectedCourse, element, data, handleOpenModal}) => {
 
   return (
     <div className='course-container'>
