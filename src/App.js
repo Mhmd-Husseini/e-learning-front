@@ -10,6 +10,7 @@ import TeacherClasswork from './components/pages/Teacher/ClassWork/index';
 import TeacherEnrollments from './components/pages/Teacher/Enrollments/index';
 import PostDetails from './components/pages/Teacher/PostDetails/index';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ViewSolutions from './components/pages/Teacher/ViewSolution/index';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="Classwork" element={<TeacherClasswork />} />
           <Route path="enrollments" element={<TeacherEnrollments />} />
           <Route path="PostDetails" element={<PostDetails />} />
+          <Route path="Solution" element={<ViewSolutions />} />
         </Route> 
 
         <Route path="/Student" >

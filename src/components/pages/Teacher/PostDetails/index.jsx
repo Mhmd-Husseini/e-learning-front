@@ -36,7 +36,10 @@ const PostDetails = () => {
             <div className="bottom">
                 <Link to={'/teacher/Classwork'}><button className="btn">back</button></Link>
                 {type === "lecture" && <button className="btn" onClick={openAttendanceModal}>Attendance</button>}
-                {(type === "assignment" || type === "quiz") && <button className="btn">View Solution</button>}
+                
+                <Link to={'/teacher/solution'}>
+                    {(type === "assignment" || type === "quiz") && <button className="btn">View Solution</button>}
+                </Link>
             </div>
             
         </div>

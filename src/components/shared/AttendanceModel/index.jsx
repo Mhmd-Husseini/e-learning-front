@@ -19,7 +19,7 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
     .then(response => {
           // console.log(response.data.course.students);
         setStudents(response.data.course.students);
-        localStorage.setItem("students", JSON.stringify(response.data.course.students));
+        // localStorage.setItem("students", JSON.stringify(response.data.course.students));
     })
     .catch(error => {
       console.log(error);
