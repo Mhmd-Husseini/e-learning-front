@@ -39,10 +39,3 @@
     font-size: 30px;
     border-bottom: 1px solid #b6b8b7 ;
 }
-
-.class-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-}

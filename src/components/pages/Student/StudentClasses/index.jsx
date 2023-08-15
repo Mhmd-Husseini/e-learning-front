@@ -1,4 +1,5 @@
 import React from 'react'
+import CategoriesContainer from '../../../Student/CategoriesContainer'
 import "./style.css"
 import Container from '../../../shared/Container'
 import CourseModal from '../../../Student/CourseModal'
@@ -7,15 +8,9 @@ import { sendRequest } from '../../../../config/request'
 
 const StudentClasses = () => {
 
-  const defaultState = {
-      "id": 1,
-      "category_id": "Math",
-      "teacher_id": "nour younes",
-      "title": "Algebra",
-      "description": "lorem",
-      "seats": 10,
-      "created_at": "2023-08-12T21:47:19.000000Z",
-      "updated_at": "2023-08-12T21:47:19.000000Z"
+  const defaultState ={
+    title: "",
+    description:""
   }
 
   const [openModal, setOpenModal] = useState(false)
@@ -32,32 +27,19 @@ const StudentClasses = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: "/courses", body: "", });
+      const response = await sendRequest({ method: 'GET', route: "/courses", body:"", });
       setCourses(response.courses);
       setCategories(response.categories);
-
+      
     } catch (error) {
     }
   };
 
   return (
     <div>
-      {/* categories */}
-      <div className='categories-container'>
-        {categories.map((item, index) => {
-          return <button>{item}</button>
-        })}
-      </div>
-      {/* courses container  */}
-      <Container
-        setSelectedCourse={setSelectedCourse}
-        element={'course'}
-        data={courses}
-        handleOpenModal={handleOpenModal} />
-      {/* Modal */}
-      <CourseModal details={selectedCourse}
-        openModal={openModal}
-        handleCloseModal={handleCloseModal} />
+      <CategoriesContainer categories={categories}/>
+      <Container setSelectedCourse={setSelectedCourse} element={'course'} data={courses} openModal={openModal} handleOpenModal={handleOpenModal} handleCloseModal={handleCloseModal}/>
+      <CourseModal details={selectedCourse} openModal={openModal} handleCloseModal={handleCloseModal} />
     </div>
   )
 }
