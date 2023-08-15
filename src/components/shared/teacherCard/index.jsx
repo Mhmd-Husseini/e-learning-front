@@ -3,11 +3,16 @@ import './style.css';
 import { Link } from 'react-router-dom';
 
 const TeacherCard = ({ id, name, description }) => {
-  let courseid = id;
-  let link = "courses/" + courseid;
-  localStorage.setItem("courseid", courseid)
+  const link = `/teacher/CourseDetails/${id}`;
+
+  const handleClick = () => {
+    localStorage.setItem("courseid", id);
+  };
+  // let courseid = id;
+  // let link = "courses/" + courseid;
+  // localStorage.setItem("courseid", courseid)
   return (
-    <Link to={`/teacher/CourseDetails/${courseid}`} key={id} >
+    <Link to={link} onClick={handleClick}>
       <a href={link}>
         <div className="card">
           <span>{name}</span>

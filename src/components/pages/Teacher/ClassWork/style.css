@@ -22,13 +22,19 @@ nav{
     overflow: hidden;
 }
 
+.body_classwork{
+    width: 100%;
+    padding: 0 10%;
+
+}
+
 .course_head{
     width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px 0px;
     max-width: 1800px;
 }
 
@@ -47,7 +53,7 @@ nav{
 
 .posts_section{
     max-width: 1800px;
-    padding: 0 20px;
+    padding: 10px 0px;
     display: flex;
     flex-direction: column;
     align-items: self-start;
@@ -63,3 +69,7 @@ nav{
 }
 
 .content{margin: 0;}
+
+.posts_section a{
+    width: 100%;
+}

@@ -3,8 +3,7 @@ import ClassworkPost from '../../../shared/teacherClassworkPost/index';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../ClassWork/style.css';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const Classwork = () => {
   const { id } = useParams();
@@ -18,10 +17,11 @@ const Classwork = () => {
 
   const token = localStorage.getItem("token")
   const courseid = localStorage.getItem("courseid")
+  console.log(courseid)
   // console.log(courseid);
   // `http://127.0.0.1:8000/api/teacher/courses/${id}`
   const getPosts = async () => {
-    await axios.get(`http://127.0.0.1:8000/api/teacher/courses/2`, {
+    await axios.get(`http://127.0.0.1:8000/api/teacher/courses/${courseid}`, {
       "headers": {
           'Authorization': `Bearer ${token}`
       }
@@ -46,41 +46,42 @@ const Classwork = () => {
   return (
       <div className='classwork'>
         <div className='nav'><Navbar one={'teacher/Classwork'} two={'teacher/Enrollments'}/></div>
-        
-        <div className='course_head'>
-          <div><h1>{name}</h1></div>
-          <div>
-            <button>Add Post</button>
-            <button><Link to={`/teacher`}> Back </Link> </button> 
+        <div className='body_classwork'>
+          <div className='course_head'>
+            <div><h1>{name}</h1></div>
+            <div>
+              <button>Add Post</button>
+              <button><Link to={`/teacher`}> Back </Link> </button> 
+            </div>
           </div>
-        </div>
 
-        <div className='posts_section'>
-          <h2 className='postsTitle'>Lectures</h2>
-          {lectures.map((lecture) => (
-              <ClassworkPost post={lecture}/>
-          ))}
-        </div>
-        <div className='posts_section'>
-          <h2 className='postsTitle'>Materials</h2>
-          {materials.map((material) => (
-            <ClassworkPost post={material}/>
-          ))}
-        </div>
-        <div className='posts_section'>
-          <h2 className='postsTitle'>Quizzes</h2>
-          <div className='post_body'>
-            {quizzes.map((quiz) => (
-                <ClassworkPost post={quiz}/>
-            ))} 
+          <div className='posts_section'>
+            <h2 className='postsTitle'>Lectures</h2>
+            {lectures.map((lecture) => (
+                <ClassworkPost post={lecture}/>
+            ))}
           </div>
-          
-        </div>
-        <div className='posts_section'>
-          <h2 className='postsTitle'>Assignments</h2>
-          {assignments.map((assignment) => (
-              <ClassworkPost post={assignment}/>
-          ))}
+          <div className='posts_section'>
+            <h2 className='postsTitle'>Materials</h2>
+            {materials.map((material) => (
+              <ClassworkPost post={material}/>
+            ))}
+          </div>
+          <div className='posts_section'>
+            <h2 className='postsTitle'>Quizzes</h2>
+            <div className='post_body'>
+              {quizzes.map((quiz) => (
+                  <ClassworkPost post={quiz}/>
+              ))} 
+            </div>
+            
+          </div>
+          <div className='posts_section'>
+            <h2 className='postsTitle'>Assignments</h2>
+            {assignments.map((assignment) => (
+                <ClassworkPost post={assignment}/>
+            ))}
+          </div>
         </div>
       </div>
     );

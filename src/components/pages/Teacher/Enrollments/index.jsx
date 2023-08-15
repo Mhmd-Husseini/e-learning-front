@@ -4,6 +4,7 @@ import '../Enrollments/style.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ChatModal from '../../../shared/ChatModel';
+import {Link } from 'react-router-dom';
 
 const Enrollments = () => {
 
@@ -45,9 +46,12 @@ const Enrollments = () => {
   console.log(students , 2222222)
 
     return (
-      <div className='body'>
+      <div className='body_enroll'>
         <div className='nav'><Navbar one={'teacher/Classwork'} two={'teacher/Enrollments'}/></div>
-        <div className="title"><h1>Enrollments</h1></div>
+          <div className='enroll_head'>
+              <div><h1>Enrollments</h1></div>
+              <div><button><Link to={`/teacher`}> Back </Link> </button> </div>
+          </div>
         <div className='studnets'>
           {students.map((student) => (
             <Person key={student.id} info={student} handleOpenModal={() => handleOpenModal(student)}/>

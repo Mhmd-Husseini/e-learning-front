@@ -1,25 +1,35 @@
 import React from 'react'
 import '../PostDetails/style.css'
-
+import Navbar from '../../../shared/navbar'
+import { Link } from 'react-router-dom'
 const PostDetails = () => {
+    const postString = localStorage.getItem("post")
+    const post = JSON.parse(postString);
+    console.log(post)
+
+    const postId = post.id;
+    const postTitle = post.title;
+    const postDescription = post.description;
+    console.log(postTitle, postId)
+
     return (
-        <div className='submission-container'>
-            <div className="submission-wrapper">
-                <div className='submission-instructions'>
-                    <span className='title-large'>Assignment Title</span>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et itaque porro fugit cupiditate voluptate. Repellendus unde qui, placeat optio enim id ullam dolorem eos numquam quae neque expedita, nemo tenetur!
-                    </p>
+        <div className="submission-container">
+        <div className="submission-wrapper">
+            <div className="submission-instructions">
+                <div className='nav'><Navbar one={'teacher/Classwork'} two={'teacher/Enrollments'}/></div>
+                <div className='body'>
+                    <span className="title-large">{postTitle}</span>
+                    <p>{postDescription}</p>
                 </div>
-                <div className='submission-upload'>
-                    <span className='title-medium'>Submit Work</span>
-                    <input type="file" />
-                </div>
-            </div>
-            <div className="submission-wrapper">
-                <button className='attend-btn'>Attendance</button>
+                
             </div>
         </div>
+        <div className="bottom">
+            <Link to={'/teacher/Classwork'}><button className="btn">back</button></Link>
+            
+            <button className="btn">Attendance</button>
+        </div>
+    </div>
     )
 }
 
