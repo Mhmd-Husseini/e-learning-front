@@ -4,10 +4,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../ClassWork/style.css';
 import { useParams, Link } from 'react-router-dom';
+import AddPostFormModal from '../../../shared/AddPostModel/index';
 
 const Classwork = () => {
   const { id } = useParams();
   console.log(id);
+
+  const [addPostModalOpen, setIsAddPostModalOpen] = useState(false);
+
+  const openAddPostModal = () => {
+    setIsAddPostModalOpen(true);
+  };
+
+  const closeAddPostModal = () => {
+    setIsAddPostModalOpen(false);
+  };
 
   let [assignments , setAssignments] = useState([]);
   let [quizzes , setQuizzes] = useState([]);
@@ -48,10 +59,12 @@ const Classwork = () => {
           <div className='course_head'>
             <div><h1>{name}</h1></div>
             <div>
-              <button>Add Post</button>
+              <button onClick={openAddPostModal}>Add Post</button>
               <button><Link to={`/teacher`}> Back </Link> </button> 
             </div>
           </div>
+
+          <AddPostFormModal openModal={addPostModalOpen} handleCloseModal={closeAddPostModal} />
 
           <div className='posts_section'>
             <h2 className='postsTitle'>Lectures</h2>
