@@ -17,9 +17,7 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
           }
     })
     .then(response => {
-          // console.log(response.data.course.students);
         setStudents(response.data.course.students);
-        // localStorage.setItem("students", JSON.stringify(response.data.course.students));
     })
     .catch(error => {
       console.log(error);
@@ -31,6 +29,59 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
     }, []);
 
 
+    let dataToSend = [];
+    students.map((student)=>{
+        dataToSend.push({
+            'lecture_id' : parseInt(student.lecture_id),
+            "user_id" : student.id,
+            "attend" : student.attend,
+        });
+    })
+
+    console.log(dataToSend)
+
+    const course_id = localStorage.getItem("courseid");
+    const lecture_id = localStorage.getItem("lecture_id")
+    console.log(lecture_id)
+    const submit = async() => {
+
+        try {
+            const response = await axios.post(
+                `/teacher/courses/${course_id}/lecture/attendance`,
+                dataToSend,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    console.log('before ', students);
+
+    const updateAttendance = ($user_id , ischecked)=>{
+        console.log(students)
+        const updatedStudent = students.map((student)=>{
+            if (student.id  == $user_id)
+                return {
+                    ...student,
+                    attend:ischecked? 1: 0,
+                    lecture_id: lecture_id
+            };
+
+            return student;
+        });
+        
+        setStudents(updatedStudent);
+        
+    }
+
+
     return (
         <div >
             <Modal isOpen={openModal} className="attend_modal">
@@ -40,10 +91,10 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
                 </div>
                 <div>
                     {students.map((student) => (
-                        <StudentAttendance key={student.id} info={student} />
+                        <StudentAttendance key={student.id} info={student} updateAttendance= {updateAttendance} />
                     ))}
                 </div>
-                <div className='btn'><button>Submit</button></div>
+                <div className='btn' onClick={submit}><button>Submit</button></div>
             </Modal>
 
         </div>

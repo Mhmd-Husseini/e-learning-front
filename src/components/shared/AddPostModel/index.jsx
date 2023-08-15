@@ -8,7 +8,11 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
     const [description, setDescription] = useState('');
     const [file, setFile] = useState(null);
     const [type, setPostType] = useState('quiz');
+    const [date,setDate] = useState();
 
+//    const due = "2023-08-15 21:50:56";
+    const link = "wwwwwwwwww";
+    const rubric =" ooooo"
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
         setFile(selectedFile);
@@ -18,11 +22,11 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
         event.preventDefault();
         
         const token = localStorage.getItem("token");
-        const courseid = localStorage.getItem("courseid");
+        const course_id = localStorage.getItem("courseid");
 
-        const postData = { title, description, file, type, courseid };
+        const postData = { title, description, link,rubric, due:date, type, course_id };
 
-        console.log(postData)
+        //console.log(postData)
 
         const config = {
             headers: {
@@ -30,10 +34,12 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
             }
         };
 
+        console.log(postData,config);
+
         axios.post('http://127.0.0.1:8000/api/teacher/post', postData, config)
         .then(response => {
-            console.log(response.data.data);
-            window.location.href = `CourseDetails/${courseid}`;
+            console.log(response);
+            window.location.href = `CourseDetails/${course_id}`;
             handleCloseModal();
         })
         .catch(error => {
@@ -57,9 +63,9 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
                     <div onClick={handleCloseModal} className='exit'>x</div>
                 </div>
                 <div className='post_form'>
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit} encType="multipart/form-data">
                         <div className='input_div'>
-                            <label for="title">Title:</label><br></br>
+                            <label htmlFor="title">Title:</label><br></br>
                             <input
                             type="text"
                             id="title"
@@ -69,7 +75,7 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
                             />
                         </div>
                         <div className='input_div'>
-                            <label for="description">Description:</label><br></br>
+                            <label htmlFor="description">Description:</label><br></br>
                             <textarea
                             id="description"
                             value={description}
@@ -78,7 +84,7 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
                             />
                         </div>
                         <div className='input_div'>
-                            <label for="file">Upload File:</label>
+                            <label htmlFor="file">Upload File:</label>
                             <input
                             type="file"
                             id="file"
@@ -86,8 +92,18 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
                             onChange={handleFileChange}
                         />
                         </div>
+
                         <div className='input_div'>
-                            <label for="type">Post Type:</label><br></br>
+                            <label htmlFor="file">Choose date:</label>
+                            <input
+                            type="date"
+                            id="date"
+                            onChange={(e) => setDate(e.target.value)}
+                        />
+
+                        </div>
+                        <div className='input_div'>
+                            <label htmlFor="type">Post Type:</label><br></br>
                             <select
                             id="type"
                             value={type}

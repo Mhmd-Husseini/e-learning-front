@@ -49,6 +49,7 @@ const ViewSolutions = () => {
                         <th>Student Name</th>
                         <th>Solution</th>
                         <th>Grade</th>
+                        <th></th>
                     </tr>
             </thead>
             <tbody>
@@ -63,6 +64,7 @@ const ViewSolutions = () => {
                     onChange={e => handleGradeChange(solution.id, e.target.value)}
                     />
                 </td>
+                <td><button>Add Grade</button></td>
                 </tr>
             ))} */}
                 <tr>
@@ -72,31 +74,9 @@ const ViewSolutions = () => {
                     <td>
                         <input
                         type="number"
-                        value="100"
                         />
                     </td>
-                </tr>
-                <tr>
-                    <td>omar</td>
-                    {/* <td><a href={solution.solutionFileUrl} target="_blank" rel="noopener noreferrer">View Solution</a></td> */}
-                    <td></td>
-                    <td>
-                        <input
-                        type="number"
-                        value="100"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <td>omar</td>
-                    {/* <td><a href={solution.solutionFileUrl} target="_blank" rel="noopener noreferrer">View Solution</a></td> */}
-                    <td></td>
-                    <td>
-                        <input
-                        type="number"
-                        value="100"
-                        />
-                    </td>
+                    <td><button>Add Grade</button></td>
                 </tr>
             </tbody>
         </table>
