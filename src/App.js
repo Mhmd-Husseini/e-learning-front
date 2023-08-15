@@ -5,6 +5,7 @@ import Children from './components/pages/Parent/Children';
 import Son from './components/pages/Parent/Son';
 import StudentClasses from './components/pages/Student/StudentClasses';
 import TeacherClasses from './components/pages/Teacher/TeacherClasses';
+import StudentLayout from './components/pages/Student/StudentLayout';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -13,20 +14,18 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Landing />} />
-        
+
         <Route path="/admin/*" element={<AdminLayout />} />
 
         <Route path="/teacher" >
           <Route index element={<TeacherClasses />} />
-        </Route> 
+        </Route>
 
-        <Route path="/Student" >
-          <Route index element={<StudentClasses />} />
-        </Route> 
+        <Route path="/Student/*" element={<StudentLayout />} />
 
         <Route path="/Parent" >
           <Route index element={<Children />} />
-        </Route> 
+        </Route>
 
         <Route path="*" element={<Landing />} />
 
