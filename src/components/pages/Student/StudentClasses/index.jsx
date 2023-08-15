@@ -7,9 +7,15 @@ import { sendRequest } from '../../../../config/request'
 
 const StudentClasses = () => {
 
-  const defaultState ={
-    title: "",
-    description:""
+  const defaultState = {
+      "id": 1,
+      "category_id": "Math",
+      "teacher_id": "nour younes",
+      "title": "Algebra",
+      "description": "lorem",
+      "seats": 10,
+      "created_at": "2023-08-12T21:47:19.000000Z",
+      "updated_at": "2023-08-12T21:47:19.000000Z"
   }
 
   const [openModal, setOpenModal] = useState(false)
@@ -26,10 +32,10 @@ const StudentClasses = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await sendRequest({ method: 'GET', route: "/courses", body:"", });
+      const response = await sendRequest({ method: 'GET', route: "/courses", body: "", });
       setCourses(response.courses);
       setCategories(response.categories);
-      
+
     } catch (error) {
     }
   };
@@ -39,19 +45,19 @@ const StudentClasses = () => {
       {/* categories */}
       <div className='categories-container'>
         {categories.map((item, index) => {
-            return <button>{item}</button>
+          return <button>{item}</button>
         })}
-    </div>
-    {/* courses container  */}
-      <Container 
-      setSelectedCourse={setSelectedCourse} 
-      element={'course'} 
-      data={courses} 
-      handleOpenModal={handleOpenModal} />
+      </div>
+      {/* courses container  */}
+      <Container
+        setSelectedCourse={setSelectedCourse}
+        element={'course'}
+        data={courses}
+        handleOpenModal={handleOpenModal} />
       {/* Modal */}
-      <CourseModal details={selectedCourse} 
-      openModal={openModal} 
-      handleCloseModal={handleCloseModal} />
+      <CourseModal details={selectedCourse}
+        openModal={openModal}
+        handleCloseModal={handleCloseModal} />
     </div>
   )
 }

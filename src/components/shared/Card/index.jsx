@@ -20,7 +20,7 @@ const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
         return (
             <>
                 <div className="card" onClick={grabCourse}>
-                    <span className='course-title'>{course.course.title}</span>
+                    <span className='course-title'>{course.title}</span>
                 </div>
             </>
         )
