@@ -15,7 +15,7 @@
     height: 100%;
     border-radius: 20px;
     background-color: #ffed96;
-    overflow: hidden;
+    overflow: scroll;
   }
   
   .chat-header {
