@@ -35,7 +35,7 @@ const ChatModal = ({openModal, student, handleCloseModal , messages}) => {
         <Modal isOpen={openModal} className="modal">
           <div className='chat-container'>
               {messages.map((msg, index) => {
-                if(msg.user1_id == student.id){
+                if(msg.user1_id === student.id){
                   return <div key={index}>{student.name}: {msg.message}</div>
                 }else{return <div key={index}>You: {msg.message}</div>}
               })}

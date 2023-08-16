@@ -10,9 +10,6 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
     const [type, setPostType] = useState('quiz');
     const [date,setDate] = useState();
 
-//    const due = "2023-08-15 21:50:56";
-    const link = "wwwwwwwwww";
-    const rubric =" ooooo"
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
         setFile(selectedFile);
@@ -23,10 +20,17 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
         
         const token = localStorage.getItem("token");
         const course_id = localStorage.getItem("courseid");
+        const postData = { title, description, date, type, course_id };
 
-        const postData = { title, description, link,rubric, due:date, type, course_id };
+        if (type === 'quiz' || type === 'assignment') {
+            postData.due = date; 
+            delete postData.date; 
+        }
+        else if (type === 'lecture') {
+            postData.date = date;
+        }
 
-        //console.log(postData)
+        console.log(postData)
 
         const config = {
             headers: {
@@ -39,7 +43,7 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
         axios.post('http://127.0.0.1:8000/api/teacher/post', postData, config)
         .then(response => {
             console.log(response);
-            window.location.href = `CourseDetails/${course_id}`;
+            window.location.reload();
             handleCloseModal();
         })
         .catch(error => {
@@ -82,15 +86,6 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
                             onChange={(e) => setDescription(e.target.value)}
                             required
                             />
-                        </div>
-                        <div className='input_div'>
-                            <label htmlFor="file">Upload File:</label>
-                            <input
-                            type="file"
-                            id="file"
-                            accept=".pdf,.doc,.docx,.txt"
-                            onChange={handleFileChange}
-                        />
                         </div>
 
                         <div className='input_div'>
