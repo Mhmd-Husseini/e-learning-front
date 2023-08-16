@@ -9,7 +9,7 @@ import TeacherCourseDetails from './components/pages/Teacher/CourseDetails/index
 import TeacherClasswork from './components/pages/Teacher/ClassWork/index';
 import TeacherEnrollments from './components/pages/Teacher/Enrollments/index';
 import PostDetails from './components/pages/Teacher/PostDetails/index';
-import TeacherClasses from './components/pages/Teacher/TeacherClasses';
+// import TeacherCourses from './components/pages/Teacher/teacherCourses';
 import StudentLayout from './components/pages/Student/StudentLayout';
 import ParentMain from './components/pages/Parent/ParentMain';
 import './App.css' 

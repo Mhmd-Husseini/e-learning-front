@@ -9,7 +9,7 @@ import './style.css'
 const AdminAdmin = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState("");  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };

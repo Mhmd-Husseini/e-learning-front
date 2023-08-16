@@ -1,6 +1,6 @@
 import React from 'react'
 import TeacherCard from '../teacherCard/index'
-import './style.css'
+// import './style.css'
 
 const CardsContainer = ({courses}) => {
   return (

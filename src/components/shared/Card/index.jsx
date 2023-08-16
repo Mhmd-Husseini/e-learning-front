@@ -6,11 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
 
-<<<<<<< HEAD
     const navigate = useNavigate()
-=======
     let id = course.id
->>>>>>> origin/Admin
 
     const grabCourse = async () => {
         setSelectedCourse(course)
