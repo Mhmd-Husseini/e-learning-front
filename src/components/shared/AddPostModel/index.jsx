@@ -61,8 +61,8 @@ const AddPostFormModal = ({ openModal, handleCloseModal }) => {
 
     return (
         <div>
-            <Modal isOpen={openModal} className="attend_modal">
-                <div className='attend_head'>
+            <Modal isOpen={openModal} className="post_modal">
+                <div className='post_head'>
                     <div><h2>Add Post</h2></div>
                     <div onClick={handleCloseModal} className='exit'>x</div>
                 </div>

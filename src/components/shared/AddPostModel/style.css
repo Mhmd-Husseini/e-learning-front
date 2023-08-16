@@ -1,4 +1,4 @@
-.post_modal {
+/* .post_modal {
     width: 600px;
     height: 500px;
     position: absolute;
@@ -8,7 +8,7 @@
     background-color: rgb(0, 123, 255);
     border-radius: 20px;
   }
-  
+   */
   .post_head {
     padding: 5px 10px;
     display: flex;
@@ -25,8 +25,11 @@
   .post_form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     padding: 20px;
+    gap: 10px;
   }
   
   .post_form label {
@@ -69,7 +72,7 @@
   }
   
   .post_form button[type="submit"] {
-    background-color: #ffed96;
+    background-color: #333;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
@@ -109,15 +112,15 @@
     justify-content: space-between;
     align-items: center;
   }
-
-form{
+/* 
+.form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 20px;
-  }
+  } */
 
   .input_div{
     height: auto;
@@ -126,3 +129,33 @@ form{
     align-items: flex-start;
     width: 100%;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .post_modal {
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 123, 255);
+    border-radius: 20px;
+    overflow: auto;
+  }
+  
+.post_modal .btn{
+  color: black;
+    background-color: transparent;
+    margin-bottom: 10px;    
+}

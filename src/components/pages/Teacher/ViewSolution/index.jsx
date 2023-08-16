@@ -64,7 +64,7 @@ const ViewSolutions = () => {
         <Link to={'/teacher/PostDetails'}><button>Back</button></Link>
       </div>
       <div className='solution_body'>
-        <table>
+        <table className='teacher_table'>
           <thead>
             <tr>
               <th>Student Name</th>
