@@ -3,7 +3,7 @@ import "./style.css";
 import ModalFormCourses from "../ModalFormCourses";
 import { sendRequest } from '../../../config/request';
 
-const CoursesTable = ({ courses, onDelete }) => {
+const CoursesTable = ({ courses, onDelete, fetchCourses }) => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddingCourse, setIsAddingCourse] = useState(false);
@@ -17,6 +17,7 @@ const CoursesTable = ({ courses, onDelete }) => {
   const handleCloseModal = () => {
     setSelectedCourse(null);
     setIsModalOpen(false);
+    fetchCourses();
   };
 
   const handleUpdateCourse = async (updatedData) => {

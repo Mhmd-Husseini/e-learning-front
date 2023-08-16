@@ -41,7 +41,7 @@ const AdminCourse = () => {
   
   return (
     <div>
-      <CoursesTable courses={courses}  onDelete={handleDelete}  />
+      <CoursesTable courses={courses}  onDelete={handleDelete} fetchCourses={fetchCourses} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import "./style.css";
 import ModalForm from "../ModalForm";
 import { sendRequest } from '../../../config/request';
 
-const UsersTable = ({ users, onDelete }) => {
+const UsersTable = ({ users, onDelete, fetchUsers }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddingUser, setIsAddingUser] = useState(false);
@@ -17,6 +17,7 @@ const UsersTable = ({ users, onDelete }) => {
   const handleCloseModal = () => {
     setSelectedUser(null);
     setIsModalOpen(false);
+    fetchUsers();
   };
 
   const handleUpdateUser = async (updatedData) => {
