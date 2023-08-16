@@ -10,11 +10,11 @@ const Person = ({info, handleOpenModal}) => {
     <div className='body'>
         <div className='person-item student'>
             <span>Student: {info.name}</span>
-            <FontAwesomeIcon className='icons' icon={faComment}  onClick={() => handleOpenModal(info)}/>
+            <span className='icons' onClick={() => handleOpenModal(info)}/>
         </div>
         <div className='person-item'>
             <span>Parent: {info.parent.name}</span>
-            <FontAwesomeIcon className='icons' icon={faComment} onClick={() => handleOpenModal(info)}/>
+            <span className='icons' onClick={() => handleOpenModal(info)}/>
         </div>
     </div>
     
