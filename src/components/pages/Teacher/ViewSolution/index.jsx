@@ -13,12 +13,14 @@ const ViewSolutions = () => {
   }, []);
 
   const fetchSolutions = async () => {
+    // console.log(type, post_id)
     try {
       const response = await axios.get(`http://127.0.0.1:8000/api/submissions/${type}/${post_id}`,{
         "headers": {
           'Authorization': `Bearer ${token}`
         }
       });
+      console.log(response.data.submissions)
       setSolutions(response.data.submissions);
     } catch (error) {
       console.error('Error fetching solutions:', error);

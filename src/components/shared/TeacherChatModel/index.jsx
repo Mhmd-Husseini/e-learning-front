@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import '../ChatModel/style.css'
+import './style.css'
 import React, { useState } from 'react';
 import axios from 'axios';
 

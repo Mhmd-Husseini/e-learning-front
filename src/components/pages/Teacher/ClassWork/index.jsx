@@ -1,4 +1,4 @@
-import Navbar from '../../../shared/navbar'
+import Navbar from '../../../shared/teacherNav/index'
 import ClassworkPost from '../../../shared/teacherClassworkPost/index';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';

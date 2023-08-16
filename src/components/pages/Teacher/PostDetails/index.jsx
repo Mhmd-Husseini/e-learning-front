@@ -1,5 +1,5 @@
 import React, { useState } from 'react';import '../PostDetails/style.css'
-import Navbar from '../../../shared/navbar'
+import Navbar from '../../../shared/teacherNav/index'
 import { Link } from 'react-router-dom'
 import AttendanceModal from '../../../shared/AttendanceModel/index'
 
@@ -36,11 +36,16 @@ const PostDetails = () => {
             <AttendanceModal openModal={isAttendanceModalOpen} handleCloseModal={closeAttendanceModal} />
             <div className="bottom">
                 <Link to={'/teacher/Classwork'}><button className="btn">back</button></Link>
-                
-                <Link to={'/teacher/solution'}>
-                    {(type === "assignment" || type === "quiz") && <button className="btn">View Solution</button>}
-                    {type === "lecture" && <button className="btn" onClick={openAttendanceModal}>Attendance</button>}
-                </Link>
+                {type === "lecture" && (
+                <button className="btn" onClick={openAttendanceModal}>
+                Attendance
+                </button>
+                )}
+
+                {(type === "assignment" || type === "quiz") && (
+                <Link to="/teacher/solution">
+                <button className="btn">View Solution</button>
+                </Link>)}
             </div>
             
         </div>

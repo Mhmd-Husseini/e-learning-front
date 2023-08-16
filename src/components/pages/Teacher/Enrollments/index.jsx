@@ -1,9 +1,9 @@
-import Navbar from '../../../shared/navbar';
+import Navbar from '../../../shared/teacherNav/index';
 import Person from '../../../shared/teacher_person';
 import '../Enrollments/style.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ChatModal from '../../../shared/ChatModel';
+import ChatModal from '../../../shared/TeacherChatModel/index';
 import {Link } from 'react-router-dom';
 
 const Enrollments = () => {

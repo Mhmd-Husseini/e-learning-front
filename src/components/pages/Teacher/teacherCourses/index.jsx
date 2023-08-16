@@ -1,5 +1,5 @@
 import '../teacherCourses/style.css'
-import Navbar from '../../../shared/navbar/index'
+import Navbar from '../../../shared/teacherNav/index'
 import CardsContainer from '../../../shared/CardsContainer/index';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
