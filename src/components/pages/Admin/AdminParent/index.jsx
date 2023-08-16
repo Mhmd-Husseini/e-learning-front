@@ -38,7 +38,7 @@ const AdminAdmin = () => {
   
   return (
     <div>
-      <UsersTable users={users}  onDelete={handleDelete}  />
+      <UsersTable users={users}  onDelete={handleDelete} fetchUsers={fetchUsers} />
     </div>
   );
 };
