@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./style.css";
 import { sendRequest } from '../../../../config/request';
 import InfoRectangle from '../../../Admin/InfoRectangle';
-import { PieChart, Pie, Tooltip } from 'recharts';
+import { PieChart, Pie, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'; 
 import LinesChart from '../../../Admin/LinesChart';
 
 const AdminLayout = () => {
@@ -50,6 +50,14 @@ const AdminLayout = () => {
     }));
   };
 
+  const totalEnrollments = () => {
+    return data.teachersWithEnrollment?.map(item => ({
+      teacher_name: item.teacher_name,
+      total_enrollments: item.total_enrollments,
+    })) || [];
+  };
+
+
   return (
     <>
       <div className="admin-page">
@@ -57,7 +65,7 @@ const AdminLayout = () => {
         <InfoRectangle label="Students" info={data.studentsNum} />
         <InfoRectangle label="Courses" info={data.courseCount} />
         <div className='pie'> 
-          <h2>Course Categories:</h2>
+          <h2 >Course Categories:</h2>
           <div>
             <PieChart width={500} height={400}>
               <Pie dataKey="value" isAnimationActive={false} data={subdata} cx="50%" cy="50%" outerRadius={80} fill="#007bff" label />
@@ -66,10 +74,32 @@ const AdminLayout = () => {
           </div>
         </div>
         <div className="chart-container">
+        <h2 className='charts-title'>Users with Time:</h2>
           {data.teachersByDate && data.studentsByDate && data.parentsByDate && (
             <LinesChart data={generateCombinedData()}dataKeys={['teachers','students','parents']}colors={['blue','red','orange']}strokeWidth={40}axisColor="#333" labelColor="#555"/>
           )}
         </div>   
+        <div className='pie'> 
+          <h2 >Users Distribution:</h2>
+          <div>
+            <PieChart width={500} height={400}>
+              <Pie dataKey="value" isAnimationActive={false} data={subdata} cx="50%" cy="50%" outerRadius={80} fill="#007bff" label />
+              <Tooltip />
+            </PieChart>
+          </div>
+        </div>
+        <div className="histogram">
+          <h2 className='charts-title'>Most Wanted Teachers: </h2>
+          <div>
+            <BarChart width={800} height={500} data={totalEnrollments()}>
+              <CartesianGrid strokeDasharray="3 3" stroke="rgb(0, 123, 255)"/>
+              <XAxis dataKey="teacher_name"  />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="total_enrollments" fill="rgb(0, 123, 255)" />
+            </BarChart>
+          </div>
+        </div>
       </div>
     </>
   );
