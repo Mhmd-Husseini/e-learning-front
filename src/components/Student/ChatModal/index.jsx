@@ -35,8 +35,8 @@ const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
           {/* <div className='chat-header'>Messages */}
             {messages.map((msg, index) => {
               if(msg.user1_id == person.id){
-                return <div key={index}>{person.name}: {msg.message}</div>
-              }else{return <div key={index}>You: {msg.message}</div>}
+                return <div className='sender' key={index}>{person.name}: {msg.message}</div>
+              }else{return <div className='receiver' key={index}>You: {msg.message}</div>}
             })}
           {/* </div> */}
           <div className='before-content' onClick={handleCloseModal}>X</div>

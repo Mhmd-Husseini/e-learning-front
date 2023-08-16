@@ -64,3 +64,18 @@
     margin-right: 30px;
   }
   
+  .sender , .receiver {
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 85%;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .sender {
+    background-color: #e4cf8f;
+  }
+
+  .receiver {
+    background-color: #f2c94c;
+  }
