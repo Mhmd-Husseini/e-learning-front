@@ -20,7 +20,7 @@ const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
         return (
             <>
                 <div className="card" onClick={grabCourse}>
-                    <span className='course-title'>{course.title}</span>
+                    <span className='course-title'>{course.name}</span>
                 </div>
             </>
         )
@@ -28,7 +28,7 @@ const Card = ({ type, setSelectedCourse, course, handleOpenModal }) => {
         return (
             <div className='class-container'>
                 <div className='card2' onClick={navigateToTasks}>
-                    <div className='course-title2'><span>{course.title}</span></div>
+                    <div className='course-title2'><span>{course.name}</span></div>
                     <div>Assignment</div>
                 </div>
                 <button onClick={navigateToChat}>Chat Room</button>

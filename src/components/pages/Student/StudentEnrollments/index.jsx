@@ -7,7 +7,7 @@ import { sendRequest } from '../../../../config/request'
 const StudentEnrollments = () => {
 
   const defaultState ={
-    title: "",
+    name: "",
     description:""
   }
 

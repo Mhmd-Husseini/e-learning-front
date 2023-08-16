@@ -11,7 +11,7 @@ const StudentClasses = () => {
       "id": 1,
       "category_id": "Math",
       "teacher_id": "nour younes",
-      "title": "Algebra",
+      "name": "Algebra",
       "description": "lorem",
       "seats": 10
   }
