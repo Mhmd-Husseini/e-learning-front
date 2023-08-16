@@ -4,7 +4,7 @@ import Modal from 'react-modal'
 import { sendRequest } from '../../../config/request'
 
 const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
-  console.log(messages)
+  // console.log(messages)
   const defaultState = {
     message: '',
   }
@@ -13,7 +13,6 @@ const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
   const handleDataChange = (e) => {
     setData({ [e.target.name]: e.target.value });
   };
-console.log(person.id)
   async function sendMessage() {
 
     try {
@@ -36,8 +35,8 @@ console.log(person.id)
           {/* <div className='chat-header'>Messages */}
             {messages.map((msg, index) => {
               if(msg.user1_id == person.id){
-                return <div key={index}>{person.name}: {msg.message}</div>
-              }else{return <div key={index}>You: {msg.message}</div>}
+                return <div className='sender' key={index}>{person.name}: {msg.message}</div>
+              }else{return <div className='receiver' key={index}>You: {msg.message}</div>}
             })}
           {/* </div> */}
           <div className='before-content' onClick={handleCloseModal}>X</div>

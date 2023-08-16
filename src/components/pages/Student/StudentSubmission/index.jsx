@@ -72,7 +72,6 @@ const StudentSubmission = () => {
         </div>
       </div>
       <div className="submission-wrapper">
-        <button className='attend-btn'>Attendance</button>
       </div>
     </div >
   )

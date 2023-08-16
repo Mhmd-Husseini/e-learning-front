@@ -10,7 +10,7 @@ import StudentEnrollments from '../StudentEnrollments';
 const StudentLayout = () => {
     return (
         <>
-            <Navbar one={'Notifications'} two={'Enrollments'} user={'Student'} />
+            <Navbar one={'Courses'} two={'Enrollments'} user={'Student'} />
             <div>
                 <Routes>
                     <Route index element={<StudentClasses />} />
