@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./style.css"
 import ChildCard from '../../../parent/ChildCard'
@@ -27,17 +28,19 @@ const Children = () => {
   return (
     
     <div className="body">
-      <Navbar/>
+      
       <div className='container'>
         <h2>Your Children</h2>
         <div className="cards_container">
           {childrenData.map(child => (
-            <ChildCard
-              key={child.name}
-              name={child.name}
-              childId={child.id}
-            />
-
+            <Link to={`/parent/childCourses/${child.id}`}>
+              <ChildCard
+                key={child.id}
+                name={child.name}
+                childId={child.id}
+                
+              />
+            </Link>
           ))}
         </div>
       </div>

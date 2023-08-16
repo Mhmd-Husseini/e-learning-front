@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
-
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import "./style.css";
 
 
-const ChildCard = ({ name, childId }) => {
+const ChildCard = ({ name }) => {
     
-    const navigate = useNavigate();
-    const link = childId;
 
-  return(<div className="single_card" onClick={() => navigate(`/parent/childCourses`)}>
+  return(
+    <div className="single_card">
     
     <h3>{name}</h3>
     
