@@ -4,7 +4,7 @@ import Modal from 'react-modal'
 import { sendRequest } from '../../../config/request'
 
 const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
-  console.log(messages)
+  // console.log(messages)
   const defaultState = {
     message: '',
   }
@@ -13,7 +13,6 @@ const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
   const handleDataChange = (e) => {
     setData({ [e.target.name]: e.target.value });
   };
-console.log(person.id)
   async function sendMessage() {
 
     try {
