@@ -41,7 +41,7 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
     console.log(dataToSend)
 
     const course_id = localStorage.getItem("courseid");
-    const lecture_id = localStorage.getItem("lecture_id")
+    const lecture_id = localStorage.getItem("post_id")
     console.log(lecture_id)
     const submit = async() => {
 

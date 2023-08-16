@@ -6,14 +6,15 @@ import { Link } from 'react-router-dom';
 const ViewSolutions = () => {
   const [solutions, setSolutions] = useState([]);
   const token = localStorage.getItem("token")
-
+  const type = localStorage.getItem("type")
+  const post_id = localStorage.getItem("post_id")
   useEffect(() => {
     fetchSolutions();
   }, []);
 
   const fetchSolutions = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/submissions/quiz/1',{
+      const response = await axios.get(`http://127.0.0.1:8000/api/submissions/${type}/${post_id}`,{
         "headers": {
           'Authorization': `Bearer ${token}`
         }

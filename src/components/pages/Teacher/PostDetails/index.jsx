@@ -9,7 +9,7 @@ const PostDetails = () => {
     const post = JSON.parse(postString);
     const postTitle = post.title;
     const postDescription = post.description;
-    localStorage.setItem("lecture_id", post.id);
+    localStorage.setItem("post_id", post.id);
 
     const [isAttendanceModalOpen, setIsAttendanceModalOpen] = useState(false);
 
