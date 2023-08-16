@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const ViewSolutions = () => {
   const [solutions, setSolutions] = useState([]);
-
   const token = localStorage.getItem("token")
 
   useEffect(() => {
@@ -14,44 +13,41 @@ const ViewSolutions = () => {
 
   const fetchSolutions = async () => {
     try {
-      const response = await axios.get('API_ENDPOINT_HERE');
-      setSolutions(response.data);
+      const response = await axios.get('http://127.0.0.1:8000/api/submissions/quiz/1',{
+        "headers": {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setSolutions(response.data.submissions);
     } catch (error) {
       console.error('Error fetching solutions:', error);
     }
   };
 
-  const handleGradeChange = (submissionId, grade) => {
-    // Update the solutions array with the new grade
-    const updatedSolutions = solutions.map(solution => {
-      if (solution.id === submissionId) {
-        return { ...solution, grade: parseInt(grade) };
-      }
-      return solution;
-    });
-
-    setSolutions(updatedSolutions);
-  };
-
-  const AddGrade = async (submissionId, grade) => {
+  const AddGrade = async (submissionId, newGrade) => {
     try {
+      const requestBody = {
+        submission_id: submissionId,
+        grade: newGrade
+      };
+  
       const response = await axios.post(
-        `http://127.0.0.1:8000/api/submissions/update`,
-        { submissionId, grade },
+        'http://127.0.0.1:8000/api/submissions/update',
+        requestBody,
         {
           headers: {
-            'Authorization': `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         }
       );
-      console.log(response.data);
-      // Update the solutions array with the new grade
-      const updatedSolutions = solutions.map(solution => {
-        if (solution.id === submissionId) {
-          return { ...solution, grade: parseInt(grade) };
-        }
-        return solution;
-      });
+  
+      console.log('Response:', response.data);
+  
+      const updatedSolutions = solutions.map((solution) =>
+        solution.id === submissionId ? { ...solution, grade: newGrade } : solution
+      );
+  
       setSolutions(updatedSolutions);
     } catch (error) {
       console.error(error);
@@ -77,16 +73,21 @@ const ViewSolutions = () => {
           <tbody>
             {solutions.map(solution => (
               <tr key={solution.id}>
-                <td>{solution.studentName}</td>
-                <td><a href={solution.solutionFileUrl} target="_blank" rel="noopener noreferrer">View Solution</a></td>
+                <td>{solution.student.name}</td>
+                <a className='file_link' href={`http://127.0.0.1:8000/${solution.file}`} target="_blank" rel="noopener noreferrer">View Solution</a>
                 <td>
                   <input
                     type="number"
                     value={solution.grade}
-                    onChange={e => handleGradeChange(solution.id, e.target.value)}
+                    onChange={e => {const newGrade = parseInt(e.target.value);
+                      setSolutions(prevSolutions =>
+                        prevSolutions.map(prevSolution =>
+                          prevSolution.id === solution.id ? { ...prevSolution, grade: newGrade } : prevSolution
+                        )
+                      );}}
                   />
                 </td>
-                <td><button onClick={() => AddGrade(solution.id, solution.grade)}>Add Grade</button></td>
+                <td><button onClick={() => AddGrade(solution.id, solution.grade)}>Add/Update Grade</button></td>
               </tr>
             ))}
           </tbody>

@@ -59,7 +59,9 @@ input[type="number"] {
     cursor: pointer;
 }
   
-.btn:hover {
-    background-color: #0056b3;
+.file_link{
+    width: 100%;
+    text-align: center;
+    padding: 10px 10%;
+    text-align: left;
 }
-  
