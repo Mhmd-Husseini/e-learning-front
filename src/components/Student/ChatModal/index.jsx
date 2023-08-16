@@ -13,7 +13,7 @@ const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
   const handleDataChange = (e) => {
     setData({ [e.target.name]: e.target.value });
   };
-
+console.log(person.id)
   async function sendMessage() {
 
     try {
@@ -33,11 +33,13 @@ const ChatModal = ({messages, person, openModal, handleCloseModal }) => {
     <div>
       <Modal isOpen={openModal} className="modal">
         <div className='chat-container'>
-          <div className='chat-header'>Messages
-            {/* {messages.map((msg, index) => {
-              return <div>{msg.message}</div>
-            })} */}
-          </div>
+          {/* <div className='chat-header'>Messages */}
+            {messages.map((msg, index) => {
+              if(msg.user1_id == person.id){
+                return <div key={index}>{person.name}: {msg.message}</div>
+              }else{return <div key={index}>You: {msg.message}</div>}
+            })}
+          {/* </div> */}
           <div className='before-content' onClick={handleCloseModal}>X</div>
           <textarea name="message" value={data.message || ""} onChange={handleDataChange} className='message-input' placeholder='Enter your message here'></textarea>
           <div className='filler'><i className="fa-solid fa-paper-plane send-icon" onClick={sendMessage}></i></div>

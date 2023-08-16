@@ -22,8 +22,12 @@ const StudentChat = () => {
 
   useEffect(() => {
     fetchClassmates();
-    fetchMsgs();
+    
   }, []);
+
+  useEffect(() => {
+    fetchMsgs();
+  }, [selectedPerson]);
 
   const fetchClassmates = async () => {
     try {
@@ -47,7 +51,7 @@ const StudentChat = () => {
   return (
     <div>
       <div className='teacher'>
-        <Person setMessages={setMessages} setSelectedPerson={setSelectedPerson} teacher={'teacher'} item={teacher} handleOpenModal={handleOpenModal}></Person>
+        <Person  setSelectedPerson={setSelectedPerson} teacher={'teacher'} item={teacher} handleOpenModal={handleOpenModal}></Person>
       </div>
       <Container setSelectedPerson={setSelectedPerson} teacher={teacher} element={'person'} data={people} handleOpenModal={handleOpenModal} />
       <ChatModal messages={messages} person={selectedPerson} openModal={openModal} handleCloseModal={handleCloseModal} />
