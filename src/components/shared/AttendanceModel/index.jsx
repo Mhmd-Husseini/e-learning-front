@@ -56,6 +56,7 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
                 }
             );
             console.log(response.data);
+            handleCloseModal()
         } catch (error) {
             console.error(error);
         }
@@ -94,7 +95,7 @@ const AttendanceModal = ({ openModal, handleCloseModal }) => {
                         <StudentAttendance key={student.id} info={student} updateAttendance= {updateAttendance} />
                     ))}
                 </div>
-                <div className='btn' onClick={submit}><button>Submit</button></div>
+                <div className='btn'  onClick={submit}><button>Submit</button></div>
             </Modal>
 
         </div>
