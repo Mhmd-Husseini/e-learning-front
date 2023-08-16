@@ -22,7 +22,7 @@ const Enrollments = () => {
   }
 
   const handleOpenModal = (student) => {
-    setSelectedStudent(student);
+    setSelectedStudent(student.id);
     setOpenModal(true);
   }
 
@@ -54,16 +54,18 @@ const Enrollments = () => {
       fetchMsgs();
     }
   }, [selectedStudent]);
+
+
   console.log(selectedStudent)
     const fetchMsgs = async () => {
-      await axios.get(`http://127.0.0.1:8000/api/chat/${selectedStudent.id}`, {
+      await axios.get(`http://127.0.0.1:8000/api/chat/${selectedStudent}`, {
         "headers": {
             'Authorization': `Bearer ${token}`
         }
     })
       .then(response => {
-        setMessages(response.data);
-        // console.log(response)
+        setMessages(response.data.data);
+        console.log(response.data.data)
         // localStorage.setItem("students", JSON.stringify(response.data.course.students));
       })
       .catch(error => {
