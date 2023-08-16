@@ -4,6 +4,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 
 
 const LinesChart = ({ data, dataKeys, colors }) => {
+  console.log(dataKeys)
+  console.log(data)
+
     return (
       <LineChart width={900} height={500} data={data}>
         <CartesianGrid strokeDasharray="3 3" />

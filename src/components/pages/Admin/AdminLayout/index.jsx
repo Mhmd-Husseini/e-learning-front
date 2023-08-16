@@ -16,7 +16,7 @@ const AdminLayout = () => {
     <>
     <div className="admin-layout">
       <AdminSidebar/>
-      <div className="content">
+      <div className="content-admin">
         <Routes>
           <Route index element={<AdminHome />} />
           <Route path="admin" element={<AdminAdmin />} />
