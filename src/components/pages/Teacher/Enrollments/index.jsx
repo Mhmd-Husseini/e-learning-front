@@ -11,6 +11,11 @@ const Enrollments = () => {
   let [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [openModal, setOpenModal] = useState(false);
+  const [messages, setMessages] = useState([]);
+
+  const token = localStorage.getItem("token")
+  const courseid = localStorage.getItem("courseid")
+  
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -21,17 +26,13 @@ const Enrollments = () => {
     setOpenModal(true);
   }
 
-  const token = localStorage.getItem("token")
-  const courseid = localStorage.getItem("courseid")
-
   const getStudnets = async () => {
     await axios.get(`http://127.0.0.1:8000/api/teacher/courses/${courseid}`, {
-      "headers": {
-          'Authorization': `Bearer ${token}`
-      }
-  })
+    "headers": {
+      'Authorization': `Bearer ${token}`
+    }
+    })
     .then(response => {
-      // console.log(response.data.course.students);
       setStudents(response.data.course.students);
       localStorage.setItem("students", JSON.stringify(response.data.course.students));
     })
@@ -48,6 +49,30 @@ const Enrollments = () => {
     localStorage.setItem("students",JSON.stringify(students));
   }, [students]);
 
+  useEffect(() => {
+    if (selectedStudent) {
+      fetchMsgs();
+    }
+  }, [selectedStudent]);
+  console.log(selectedStudent)
+    const fetchMsgs = async () => {
+      await axios.get(`http://127.0.0.1:8000/api/chat/${selectedStudent.id}`, {
+        "headers": {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+      .then(response => {
+        setMessages(response.data);
+        // console.log(response)
+        // localStorage.setItem("students", JSON.stringify(response.data.course.students));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    };
+
+    
+
   return (
     <div className='body_enroll'>
       <div className='nav'><Navbar one={'teacher/Classwork'} two={'teacher/Enrollments'}/></div>
@@ -60,11 +85,13 @@ const Enrollments = () => {
           <Person key={student.id} info={student} handleOpenModal={() => handleOpenModal(student)}/>
         ))}
       </div>
+
       {selectedStudent && (
       <ChatModal
         openModal={openModal}
         handleCloseModal={handleCloseModal}
-        student={selectedStudent}/>
+        student={selectedStudent}
+        messages={messages}/>
       )}
     </div>
   );
